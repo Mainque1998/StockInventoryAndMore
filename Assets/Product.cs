@@ -49,6 +49,7 @@ public class Product
 
     public override string ToString()
     {
-        return this.codigo + ": "+ this.producto + ", " + this.marca + ", " + this.categoria + ", " + this.cant + ", " + this.precio + ".";
+        return this.codigo + " " + this.producto + " " + this.marca + " " + this.categoria + " " + this.cant + " " + this.precio;
+        //return this.codigo + ": "+ this.producto + ", " + this.marca + ", " + this.categoria + ", " + this.cant + ", " + this.precio + ".";
     }
 }

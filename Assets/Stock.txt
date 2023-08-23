@@ -1,0 +1,4 @@
+0 Producto Marca Categoría 0 0
+1 A B C 1 2
+2 a b c 2 3
+00000000 Producto Marca Categoría 0 0

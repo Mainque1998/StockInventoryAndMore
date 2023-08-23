@@ -3,12 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class ContentManager : MonoBehaviour
 {
     public GameObject productPrefab;
 
     private List<Product> products = new List<Product>();
+
+    private string filePath;
+
+    private void Start()
+    {
+        filePath = Application.dataPath + "/Stock.txt";
+        //TODO: chequear si existe el archivo y si no existe, crearlo
+        loadContent();
+    }
+
+    private void loadContent()
+    {
+        StreamReader sr = new StreamReader(filePath);
+        string p = sr.ReadLine();
+        while (p!= null)
+        {
+            string[] vars = p.Split(' ');
+
+            products.Add(new Product(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5])));
+            
+            GameObject newP = (GameObject)Instantiate(productPrefab);
+            newP.transform.SetParent(this.transform);
+            loadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5]);
+
+            p = sr.ReadLine();
+        }
+        sr.Close();
+    }
+
+    private void loadFile()
+    {
+        StreamWriter sw = new StreamWriter(filePath);
+
+        foreach (Product pr in products)
+            sw.WriteLine( pr.ToString() );
+
+        sw.Close();
+    }
 
     public void addNewProduct(string codigo, string producto, string marca, string categoria, string cant, string precio)
     {
@@ -23,9 +62,11 @@ public class ContentManager : MonoBehaviour
 
         debugProducts();
 
-        GameObject newG = (GameObject)Instantiate(productPrefab);
-        newG.transform.SetParent(this.transform);
-        loadProduct(newG, codigo, producto, marca, categoria, cant, precio);
+        GameObject newP = (GameObject)Instantiate(productPrefab);
+        newP.transform.SetParent(this.transform);
+        loadProduct(newP, codigo, producto, marca, categoria, cant, precio);
+
+        loadFile();
     }
 
     public void updateProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string precio)
@@ -45,6 +86,8 @@ public class ContentManager : MonoBehaviour
         debugProducts();
 
         loadProduct(p, codigo, producto, marca, categoria, cant, precio);
+
+        loadFile();
     }
 
     private void loadProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string precio)
