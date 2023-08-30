@@ -41,8 +41,10 @@ public class ProductPanelController : MonoBehaviour
         inputField.text = vars[3].text;
         inputField = GameObject.Find("CantInput").GetComponent<TMP_InputField>();
         inputField.text = vars[4].text;
-        inputField = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
+        inputField = GameObject.Find("CostoInput").GetComponent<TMP_InputField>();
         inputField.text = vars[5].text;
+        inputField = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
+        inputField.text = vars[6].text;
 
         scriptPanel.openPanelFromProduct(this.gameObject);
     }
@@ -59,6 +61,8 @@ public class ProductPanelController : MonoBehaviour
         inputField.text = "Categoría";
         inputField = GameObject.Find("CantInput").GetComponent<TMP_InputField>();
         inputField.text = "0";
+        inputField = GameObject.Find("CostoInput").GetComponent<TMP_InputField>();
+        inputField.text = "0";
         inputField = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
         inputField.text = "0";
         panel.SetActive(false);
@@ -72,11 +76,12 @@ public class ProductPanelController : MonoBehaviour
         TMP_InputField marca = GameObject.Find("MarcaInput").GetComponent<TMP_InputField>();
         TMP_InputField categoria = GameObject.Find("CategoriaInput").GetComponent<TMP_InputField>();
         TMP_InputField cant = GameObject.Find("CantInput").GetComponent<TMP_InputField>();
+        TMP_InputField costo = GameObject.Find("CostoInput").GetComponent<TMP_InputField>();
         TMP_InputField precio = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
         if (newProduct)
-            contentScript.addNewProduct(codigo.text, producto.text, marca.text, categoria.text, cant.text, precio.text);
+            contentScript.addNewProduct(codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
         else
-            contentScript.updateProduct(product, codigo.text, producto.text, marca.text, categoria.text, cant.text, precio.text);
+            contentScript.updateProduct(product, codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
 
         closePanel();
     }
