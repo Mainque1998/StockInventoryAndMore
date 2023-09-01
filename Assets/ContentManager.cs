@@ -105,6 +105,13 @@ public class ContentManager : MonoBehaviour
         LoadFile();
     }
 
+    public void DeleteProduct(GameObject p)
+    {
+        TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
+        products.Remove(new Product(vars[0].text));
+        Destroy(p);
+    }
+
     private void LoadProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();

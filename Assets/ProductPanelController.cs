@@ -85,4 +85,15 @@ public class ProductPanelController : MonoBehaviour
 
         ClosePanel();
     }
+
+    public void Delete()
+    {
+        if (!newProduct)
+        {
+            ContentManager contentScript = GameObject.Find("Content").GetComponent<ContentManager>();
+            contentScript.DeleteProduct(product);
+        }
+
+        ClosePanel();
+    }
 }
