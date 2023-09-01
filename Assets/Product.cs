@@ -34,7 +34,7 @@ public class Product
     public double Costo { get => costo; set => costo = value; }
     public double Precio { get => precio; set => precio = value; }
 
-    public void setAll(string codigo, string producto, string marca, string categoria, int cant, double costo, double precio)
+    public void SetAll(string codigo, string producto, string marca, string categoria, int cant, double costo, double precio)
     {
         this.codigo = codigo;
         this.producto = producto;

@@ -10,19 +10,19 @@ public class ProductPanelController : MonoBehaviour
     private bool newProduct;
     private GameObject product;
 
-    public void openPanel()
+    public void OpenPanel()
     {
         newProduct = true;
         panel.SetActive(true);
     }
 
-    public void openPanelFromProduct(GameObject p)
+    public void SetProduct(GameObject p)
     {
         product = p;
         newProduct = false;
     }
 
-    public void loadPanel()//The only method used from product
+    public void LoadPanelFromProduct()//The only method used from product
     {
         ProductPanelController scriptPanel = GameObject.Find("AddButton").GetComponent<ProductPanelController>();
         panel = scriptPanel.panel;
@@ -46,10 +46,10 @@ public class ProductPanelController : MonoBehaviour
         inputField = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
         inputField.text = vars[6].text;
 
-        scriptPanel.openPanelFromProduct(this.gameObject);
+        scriptPanel.SetProduct(this.gameObject);
     }
 
-    public void closePanel()
+    public void ClosePanel()
     {
         TMP_InputField inputField = GameObject.Find("CodigoInput").GetComponent<TMP_InputField>();
         inputField.text = "00000000";
@@ -68,7 +68,7 @@ public class ProductPanelController : MonoBehaviour
         panel.SetActive(false);
     }
 
-    public void accept()
+    public void Accept()
     {
         ContentManager contentScript = GameObject.Find("Content").GetComponent<ContentManager>();
         TMP_InputField codigo = GameObject.Find("CodigoInput").GetComponent<TMP_InputField>();
@@ -79,10 +79,10 @@ public class ProductPanelController : MonoBehaviour
         TMP_InputField costo = GameObject.Find("CostoInput").GetComponent<TMP_InputField>();
         TMP_InputField precio = GameObject.Find("PrecioInput").GetComponent<TMP_InputField>();
         if (newProduct)
-            contentScript.addNewProduct(codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
+            contentScript.AddNewProduct(codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
         else
-            contentScript.updateProduct(product, codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
+            contentScript.UpdateProduct(product, codigo.text, producto.text, marca.text, categoria.text, cant.text, costo.text, precio.text);
 
-        closePanel();
+        ClosePanel();
     }
 }

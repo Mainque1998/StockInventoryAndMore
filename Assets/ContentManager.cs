@@ -17,10 +17,10 @@ public class ContentManager : MonoBehaviour
     {
         filePath = Application.dataPath + "/Stock.txt";
         //TODO: chequear si existe el archivo y si no existe, crearlo
-        loadContent();
+        LoadContent();
     }
 
-    private void loadContent()
+    private void LoadContent()
     {
         StreamReader sr = new StreamReader(filePath);
         string p = sr.ReadLine();
@@ -32,14 +32,29 @@ public class ContentManager : MonoBehaviour
             
             GameObject newP = (GameObject)Instantiate(productPrefab);
             newP.transform.SetParent(this.transform);
-            loadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]);
+            LoadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]);
 
             p = sr.ReadLine();
         }
         sr.Close();
     }
 
-    private void loadFile()
+    private void ReLoadContent()
+    {
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Product pr in products)
+        {
+            GameObject newP = (GameObject)Instantiate(productPrefab);
+            newP.transform.SetParent(this.transform);
+            LoadProduct(newP, pr.Codigo, pr.Producto, pr.Marca, pr.Categoria, pr.Cant.ToString(), pr.Costo.ToString(), pr.Precio.ToString());
+        }
+    }
+
+    private void LoadFile()
     {
         StreamWriter sw = new StreamWriter(filePath);
 
@@ -49,7 +64,7 @@ public class ContentManager : MonoBehaviour
         sw.Close();
     }
 
-    public void addNewProduct(string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
+    public void AddNewProduct(string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
     {
         if (products.Contains(new Product(codigo)))
         {
@@ -60,16 +75,16 @@ public class ContentManager : MonoBehaviour
         products.Add(new Product(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio)));
         Debug.Log("Se agregó producto nuevo de código " + codigo);
 
-        debugProducts();
+        DebugProducts();
 
         GameObject newP = (GameObject)Instantiate(productPrefab);
         newP.transform.SetParent(this.transform);
-        loadProduct(newP, codigo, producto, marca, categoria, cant, costo, precio);
+        LoadProduct(newP, codigo, producto, marca, categoria, cant, costo, precio);
 
-        loadFile();
+        LoadFile();
     }
 
-    public void updateProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
+    public void UpdateProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
         if ((vars[0].text != codigo) && products.Contains(new Product(codigo)))
@@ -80,17 +95,17 @@ public class ContentManager : MonoBehaviour
         }
 
         int posP = products.IndexOf(new Product(vars[0].text));
-        products[posP].setAll(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio));
+        products[posP].SetAll(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio));
         Debug.Log("Se modificó el producto con codigo " + vars[0].text);
 
-        debugProducts();
+        DebugProducts();
 
-        loadProduct(p, codigo, producto, marca, categoria, cant, costo, precio);
+        LoadProduct(p, codigo, producto, marca, categoria, cant, costo, precio);
 
-        loadFile();
+        LoadFile();
     }
 
-    private void loadProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
+    private void LoadProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
         vars[0].text = codigo;
@@ -105,47 +120,69 @@ public class ContentManager : MonoBehaviour
     public void ReOrderContentByCodigo()//TODO: REPLICAR ESTO PARA TODOS LOS CAMPOS
     {
         products.Sort(CompareProductsByCodigo);
-        
-        foreach(Transform child in this.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        ReLoadContent();
 
-        foreach (Product pr in products)
-        {
-            GameObject newP = (GameObject)Instantiate(productPrefab);
-            newP.transform.SetParent(this.transform);
-            loadProduct(newP, pr.Codigo, pr.Producto, pr.Marca, pr.Categoria, pr.Cant.ToString(), pr.Costo.ToString(), pr.Precio.ToString());
-        }
     }
-
     private static int CompareProductsByCodigo(Product p1, Product p2)
     {
         return p1.Codigo.CompareTo(p2.Codigo);
+    }
+    public void ReOrderContentByProducto()
+    {
+        products.Sort(CompareProductsByProducto);
+        ReLoadContent();
     }
     private static int CompareProductsByProducto(Product p1, Product p2)
     {
         return p1.Producto.CompareTo(p2.Producto);
     }
+    public void ReOrderContentByMarca()
+    {
+        products.Sort(CompareProductsByMarca);
+        ReLoadContent();
+    }
     private static int CompareProductsByMarca(Product p1, Product p2)
     {
         return p1.Marca.CompareTo(p2.Marca);
+    }
+    public void ReOrderContentByCategoria()
+    {
+        products.Sort(CompareProductsByCategoria);
+        ReLoadContent();
     }
     private static int CompareProductsByCategoria(Product p1, Product p2)
     {
         return p1.Categoria.CompareTo(p2.Categoria);
     }
+    public void ReOrderContentByCant()
+    {
+        products.Sort(CompareProductsByCant);
+        ReLoadContent();
+    }
     private static int CompareProductsByCant(Product p1, Product p2)
     {
         return p1.Cant.CompareTo(p2.Cant);
     }
-    //
+    public void ReOrderContentByCosto()
+    {
+        products.Sort(CompareProductsByCosto);
+        ReLoadContent();
+    }
+    private static int CompareProductsByCosto(Product p1, Product p2)
+    {
+        return p1.Costo.CompareTo(p2.Costo);
+    }
+    public void ReOrderContentByPrecio()
+    {
+        products.Sort(CompareProductsByPrecio);
+        ReLoadContent();
+    }
     private static int CompareProductsByPrecio(Product p1, Product p2)
     {
         return p1.Precio.CompareTo(p2.Precio);
     }
 
-    public void debugProducts()
+    public void DebugProducts()
     {
         string debug = "Lista de productos:";
         foreach (Product pr in products)
