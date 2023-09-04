@@ -124,6 +124,34 @@ public class ContentManager : MonoBehaviour
         vars[6].text = precio;
     }
 
+    public void UpdatePriceByFilters(int typeFilter, string filter, int avg)
+    {
+        avg += 100;
+        double average = double.Parse(avg.ToString()) / 100;
+        if (typeFilter == 0)//Change all
+        {
+            foreach (Product pr in products)
+                pr.Precio = pr.Precio * average;
+        }
+        if (typeFilter == 1)//Change by Categoria
+        {
+            foreach (Product pr in products)
+                if (pr.Categoria == filter)
+                {
+                    pr.Precio = pr.Precio * average;
+                }
+        }
+        if (typeFilter == 2)//Change by Marca
+        {
+            foreach (Product pr in products)
+                if (pr.Marca == filter)
+                {
+                    pr.Precio = pr.Precio * average;
+                }
+        }
+        ReLoadContent();
+    }
+
     public void ReOrderContentByCodigo()//TODO: REPLICAR ESTO PARA TODOS LOS CAMPOS
     {
         products.Sort(CompareProductsByCodigo);
