@@ -75,8 +75,6 @@ public class ContentManager : MonoBehaviour
         products.Add(new Product(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio)));
         Debug.Log("Se agregó producto nuevo de código " + codigo);
 
-        DebugProducts();
-
         GameObject newP = (GameObject)Instantiate(productPrefab);
         newP.transform.SetParent(this.transform);
         LoadProduct(newP, codigo, producto, marca, categoria, cant, costo, precio);
@@ -98,8 +96,6 @@ public class ContentManager : MonoBehaviour
         products[posP].SetAll(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio));
         Debug.Log("Se modificó el producto con codigo " + vars[0].text);
 
-        DebugProducts();
-
         LoadProduct(p, codigo, producto, marca, categoria, cant, costo, precio);
 
         LoadFile();
@@ -110,6 +106,8 @@ public class ContentManager : MonoBehaviour
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
         products.Remove(new Product(vars[0].text));
         Destroy(p);
+
+        LoadFile();
     }
 
     private void LoadProduct(GameObject p, string codigo, string producto, string marca, string categoria, string cant, string costo, string precio)
@@ -150,6 +148,8 @@ public class ContentManager : MonoBehaviour
                 }
         }
         ReLoadContent();
+
+        LoadFile();
     }
 
     public void ReOrderContentByCodigo()//TODO: REPLICAR ESTO PARA TODOS LOS CAMPOS
