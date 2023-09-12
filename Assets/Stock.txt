@@ -3,3 +3,5 @@
 00000020 Producto Marca Categoría 1 1 4
 00000001 A B C 0 1 10
 00000002 a B F 0 2 12
+22 Producto Marca Categoría 0 0 0
+55 Producto Marca Categoría 0 0 0
