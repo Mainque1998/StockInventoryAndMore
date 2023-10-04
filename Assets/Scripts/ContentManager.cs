@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
 
 public class ContentManager : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class ContentManager : MonoBehaviour
     {
         filePath = Application.dataPath + "/Stock.txt";
         //TODO: chequear si existe el archivo y si no existe, crearlo
-        LoadContent();
+        if (File.Exists(filePath))
+            LoadContent();
+        else
+            File.Create(filePath);
     }
 
     private void LoadContent()
