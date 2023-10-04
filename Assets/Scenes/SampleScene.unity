@@ -179,6 +179,8 @@ MonoBehaviour:
   panel: {fileID: 780849266}
   dropbox: {fileID: 131791445}
   filterInput: {fileID: 1136357561}
+  avg: {fileID: 0}
+  content: {fileID: 0}
 --- !u!114 &17297318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9667,6 +9669,8 @@ MonoBehaviour:
   panel: {fileID: 780849266}
   dropbox: {fileID: 131791445}
   filterInput: {fileID: 1136357561}
+  avg: {fileID: 2021154548}
+  content: {fileID: 1534825907}
 --- !u!1 &1279125301
 GameObject:
   m_ObjectHideFlags: 0
@@ -12220,6 +12224,8 @@ MonoBehaviour:
   panel: {fileID: 780849266}
   dropbox: {fileID: 131791445}
   filterInput: {fileID: 1136357561}
+  avg: {fileID: 0}
+  content: {fileID: 0}
 --- !u!114 &1587299999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15368,6 +15374,8 @@ MonoBehaviour:
   panel: {fileID: 780849266}
   dropbox: {fileID: 131791445}
   filterInput: {fileID: 1136357561}
+  avg: {fileID: 0}
+  content: {fileID: 0}
 --- !u!114 &2080547674
 MonoBehaviour:
   m_ObjectHideFlags: 0
