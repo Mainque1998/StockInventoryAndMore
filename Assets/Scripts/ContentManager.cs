@@ -30,7 +30,7 @@ public class ContentManager : MonoBehaviour
         string p = sr.ReadLine();
         while (p!= null)
         {
-            string[] vars = p.Split(' ');
+            string[] vars = p.Split(' ');//TODO: Change this bcs the name can contains ' '
 
             products.Add(new Product(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5]), double.Parse(vars[6])));
             

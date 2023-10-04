@@ -5,4 +5,3 @@
 00000020 Producto Marca Categoría 1 1 4
 22 Producto Marca Categoría 0 0 0
 55 Producto Marca Categoría 0 0 0
-333 Producto Marca Categoría 0 0 0

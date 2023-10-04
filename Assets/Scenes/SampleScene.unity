@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 69670281}
   - component: {fileID: 69670280}
   m_Layer: 5
-  m_Name: CostoInput
+  m_Name: CostInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 113300275}
   - component: {fileID: 113300274}
   m_Layer: 5
-  m_Name: Producto
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 225803965}
   - component: {fileID: 225803964}
   m_Layer: 5
-  m_Name: Categoria
+  m_Name: Category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 302709968}
   - component: {fileID: 302709967}
   m_Layer: 5
-  m_Name: MarcaInput
+  m_Name: BrandInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2705,7 +2705,7 @@ GameObject:
   - component: {fileID: 306006113}
   - component: {fileID: 306006112}
   m_Layer: 5
-  m_Name: Categoria
+  m_Name: Category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3338,7 +3338,7 @@ GameObject:
   - component: {fileID: 389849122}
   - component: {fileID: 389849121}
   m_Layer: 5
-  m_Name: CantInput
+  m_Name: QuantInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4497,7 +4497,7 @@ GameObject:
   - component: {fileID: 501909295}
   - component: {fileID: 501909294}
   m_Layer: 5
-  m_Name: ProductoInput
+  m_Name: NameInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4850,7 +4850,7 @@ GameObject:
   - component: {fileID: 566105137}
   m_Layer: 5
   m_Name: AddButton
-  m_TagString: Untagged
+  m_TagString: AddButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4983,6 +4983,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1784839472}
+  codeInput: {fileID: 1583403237}
+  nameInput: {fileID: 501909294}
+  brandInput: {fileID: 302709967}
+  categoryInput: {fileID: 1056482417}
+  quantInput: {fileID: 389849121}
+  costInput: {fileID: 69670280}
+  priceInput: {fileID: 1039009700}
+  content: {fileID: 1534825907}
 --- !u!1 &571776124
 GameObject:
   m_ObjectHideFlags: 0
@@ -6321,7 +6329,7 @@ GameObject:
   - component: {fileID: 748633711}
   - component: {fileID: 748633710}
   m_Layer: 5
-  m_Name: Marca
+  m_Name: Brand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6883,7 +6891,7 @@ GameObject:
   - component: {fileID: 827509391}
   - component: {fileID: 827509390}
   m_Layer: 5
-  m_Name: Costo
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7388,7 +7396,7 @@ GameObject:
   - component: {fileID: 911143827}
   - component: {fileID: 911143826}
   m_Layer: 5
-  m_Name: Cantidad
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8197,7 +8205,7 @@ GameObject:
   - component: {fileID: 1039009701}
   - component: {fileID: 1039009700}
   m_Layer: 5
-  m_Name: PrecioInput
+  m_Name: PriceInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8373,7 +8381,7 @@ GameObject:
   - component: {fileID: 1056482418}
   - component: {fileID: 1056482417}
   m_Layer: 5
-  m_Name: CategoriaInput
+  m_Name: CategoryInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9386,7 +9394,7 @@ GameObject:
   - component: {fileID: 1251149802}
   - component: {fileID: 1251149801}
   m_Layer: 5
-  m_Name: Producto
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9782,7 +9790,7 @@ GameObject:
   - component: {fileID: 1279543983}
   - component: {fileID: 1279543982}
   m_Layer: 5
-  m_Name: Codigo
+  m_Name: Code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10105,7 +10113,7 @@ GameObject:
   - component: {fileID: 1308194063}
   - component: {fileID: 1308194062}
   m_Layer: 5
-  m_Name: Cantidad
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10965,7 +10973,7 @@ GameObject:
   - component: {fileID: 1439322178}
   - component: {fileID: 1439322177}
   m_Layer: 5
-  m_Name: Marca
+  m_Name: Brand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11287,7 +11295,7 @@ GameObject:
   - component: {fileID: 1502373857}
   - component: {fileID: 1502373856}
   m_Layer: 5
-  m_Name: Costo
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11476,7 +11484,7 @@ GameObject:
   - component: {fileID: 1517100911}
   - component: {fileID: 1517100910}
   m_Layer: 5
-  m_Name: Codigo
+  m_Name: Code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11993,7 +12001,7 @@ GameObject:
   - component: {fileID: 1583403238}
   - component: {fileID: 1583403237}
   m_Layer: 5
-  m_Name: CodigoInput
+  m_Name: CodeInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12674,7 +12682,7 @@ GameObject:
   - component: {fileID: 1659822546}
   - component: {fileID: 1659822545}
   m_Layer: 5
-  m_Name: Precio
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14337,7 +14345,7 @@ GameObject:
   - component: {fileID: 1897778045}
   - component: {fileID: 1897778044}
   m_Layer: 5
-  m_Name: Precio
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
