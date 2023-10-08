@@ -17,7 +17,6 @@ public class ContentManager : MonoBehaviour
     private void Start()
     {
         filePath = Application.dataPath + "/Stock.txt";
-        //TODO: chequear si existe el archivo y si no existe, crearlo
         if (File.Exists(filePath))
             LoadContent();
         else
@@ -43,22 +42,7 @@ public class ContentManager : MonoBehaviour
         sr.Close();
     }
 
-    private void ReLoadContent()
-    {
-        foreach (Transform child in this.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (Product pr in products)
-        {
-            GameObject newP = (GameObject)Instantiate(productPrefab);
-            newP.transform.SetParent(this.transform);
-            LoadProduct(newP, pr.Codigo, pr.Producto, pr.Marca, pr.Categoria, pr.Cant.ToString(), pr.Costo.ToString(), pr.Precio.ToString());
-        }
-    }
-
-    private void LoadFile()
+    private void LoadFile()//Maybe it can be used from a button and not for each update
     {
         StreamWriter sw = new StreamWriter(filePath);
 
@@ -220,6 +204,22 @@ public class ContentManager : MonoBehaviour
     {
         return p1.Precio.CompareTo(p2.Precio);
     }
+
+    private void ReLoadContent()
+    {
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Product pr in products)
+        {
+            GameObject newP = (GameObject)Instantiate(productPrefab);
+            newP.transform.SetParent(this.transform);
+            LoadProduct(newP, pr.Codigo, pr.Producto, pr.Marca, pr.Categoria, pr.Cant.ToString(), pr.Costo.ToString(), pr.Precio.ToString());
+        }
+    }
+
 
     public void DebugProducts()
     {

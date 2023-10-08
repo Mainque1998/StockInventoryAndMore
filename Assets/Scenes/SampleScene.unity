@@ -5692,17 +5692,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProductPanelController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 537213191}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &468614084
 MonoBehaviour:
@@ -11851,7 +11851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1140469835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11873,8 +11873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.565}
-  m_SizeDelta: {x: 0, y: -29.13}
+  m_AnchoredPosition: {x: -1.1501, y: -14.565}
+  m_SizeDelta: {x: -2.3002, y: -29.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140469836
 MonoBehaviour:
@@ -17094,7 +17094,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18066,9 +18066,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1773458982
 MonoBehaviour:
@@ -19456,6 +19456,7 @@ GameObject:
   - component: {fileID: 1953192282}
   - component: {fileID: 1953192285}
   - component: {fileID: 1953192284}
+  - component: {fileID: 1953192286}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -19481,7 +19482,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00036726065, y: -0.00033435834}
-  m_SizeDelta: {x: -645.9106, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1953192284
 MonoBehaviour:
@@ -19523,6 +19524,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1953192286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953192281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df57e08f3def3b84d8d12f28170e419e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purchasePrefab: {fileID: 3225701432876852004, guid: f0676189ed9039d489fa6f4cda6fe27a, type: 3}
 --- !u!1 &1965156687
 GameObject:
   m_ObjectHideFlags: 0
@@ -19799,7 +19813,7 @@ GameObject:
   - component: {fileID: 2018526264}
   - component: {fileID: 2018526263}
   m_Layer: 5
-  m_Name: Costo
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20109,7 +20123,7 @@ GameObject:
   - component: {fileID: 2046774591}
   - component: {fileID: 2046774590}
   m_Layer: 5
-  m_Name: Cantidad
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

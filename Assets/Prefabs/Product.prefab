@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6759607571014331334}
   - component: {fileID: 8757021510163698487}
   m_Layer: 5
-  m_Name: Costo
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6480037195230274465}
   - component: {fileID: 6480037195230274466}
   m_Layer: 5
-  m_Name: Cantidad
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6480037195331755074}
   - component: {fileID: 6480037195331755075}
   m_Layer: 5
-  m_Name: Marca
+  m_Name: Brand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 6480037195878041712}
   - component: {fileID: 6480037195878041713}
   m_Layer: 5
-  m_Name: Categoria
+  m_Name: Category
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 6480037195883906075}
   - component: {fileID: 6480037195883906076}
   m_Layer: 5
-  m_Name: Precio
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,6 +802,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
+  codeInput: {fileID: 0}
+  nameInput: {fileID: 0}
+  brandInput: {fileID: 0}
+  categoryInput: {fileID: 0}
+  quantInput: {fileID: 0}
+  costInput: {fileID: 0}
+  priceInput: {fileID: 0}
+  content: {fileID: 0}
 --- !u!1 &6480037196255659748
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +822,7 @@ GameObject:
   - component: {fileID: 6480037196255659745}
   - component: {fileID: 6480037196255659746}
   m_Layer: 5
-  m_Name: Producto
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +957,7 @@ GameObject:
   - component: {fileID: 6480037196351276934}
   - component: {fileID: 6480037196351276935}
   m_Layer: 5
-  m_Name: Codigo
+  m_Name: Code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
