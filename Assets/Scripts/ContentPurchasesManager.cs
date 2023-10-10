@@ -29,7 +29,7 @@ public class ContentPurchasesManager : MonoBehaviour
         {
             string[] vars = p.Split(';');
 
-            //purchases.Add(new Purchase(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5])));
+            purchases.Add(new Purchase(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5])));
 
             GameObject newP = (GameObject)Instantiate(purchasePrefab);
             newP.transform.SetParent(this.transform);
@@ -52,7 +52,7 @@ public class ContentPurchasesManager : MonoBehaviour
 
     public void AddNewProduct(string date, string product, string brand, string supplier, string quant, string cost)
     {
-        //purchases.Add(new Purchase(codigo, producto, marca, categoria, int.Parse(cant), double.Parse(costo), double.Parse(precio)));
+        purchases.Add(new Purchase(date, product, brand, supplier, int.Parse(quant), double.Parse(cost)));
         Debug.Log("Se agregó una compra nueva");
 
         GameObject newP = (GameObject)Instantiate(purchasePrefab);
@@ -71,5 +71,75 @@ public class ContentPurchasesManager : MonoBehaviour
         vars[3].text = supplier;
         vars[4].text = quant;
         vars[5].text = cost;
+    }
+
+    public void ReOrderContentByDate()
+    {
+        purchases.Sort(ComparePurchasesByDate);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesByDate(Purchase p1, Purchase p2)
+    {
+        return p1.Date.CompareTo(p2.Date);
+    }
+    public void ReOrderContentByProductName()
+    {
+        purchases.Sort(ComparePurchasesByProductName);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesByProductName(Purchase p1, Purchase p2)
+    {
+        return p1.ProductName.CompareTo(p2.ProductName);
+    }
+    public void ReOrderContentByProductBrand()
+    {
+        purchases.Sort(ComparePurchasesByProductBrand);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesByProductBrand(Purchase p1, Purchase p2)
+    {
+        return p1.ProductBrand.CompareTo(p2.ProductBrand);
+    }
+    public void ReOrderContentBySupplier()
+    {
+        purchases.Sort(ComparePurchasesBySupplier);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesBySupplier(Purchase p1, Purchase p2)
+    {
+        return p1.Supplier.CompareTo(p2.Supplier);
+    }
+    public void ReOrderContentByQuant()
+    {
+        purchases.Sort(ComparePurchasesByQuant);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesByQuant(Purchase p1, Purchase p2)
+    {
+        return p1.Quant.CompareTo(p2.Quant);
+    }
+    public void ReOrderContentByCost()
+    {
+        purchases.Sort(ComparePurchasesByCost);
+        ReLoadContent();
+    }
+    private static int ComparePurchasesByCost(Purchase p1, Purchase p2)
+    {
+        return p1.Cost.CompareTo(p2.Cost);
+    }
+
+    private void ReLoadContent()
+    {
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Purchase pr in purchases)
+        {
+            GameObject newP = (GameObject)Instantiate(purchasePrefab);
+            newP.transform.SetParent(this.transform);
+            LoadPurchase(newP, pr.Date, pr.ProductName, pr.ProductBrand, pr.Supplier, pr.Quant.ToString(), pr.Cost.ToString());
+        }
     }
 }

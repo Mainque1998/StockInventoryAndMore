@@ -10,6 +10,14 @@ public class Product
     private double cost = 0;
     private double price =0;
 
+    public string Code { get => code; set => code = value; }
+    public string Name { get => name; set => name = value; }
+    public string Brand { get => brand; set => brand = value; }
+    public string Category { get => category; set => category = value; }
+    public int Quant { get => quant; set => quant = value; }
+    public double Cost { get => cost; set => cost = value; }
+    public double Price { get => price; set => price = value; }
+
     public Product(string code, string name, string brand, string category, int quant, double cost, double price)
     {
         Code = code;
@@ -25,14 +33,6 @@ public class Product
     {
         Code = code;
     }
-
-    public string Code { get => code; set => code = value; }
-    public string Name { get => name; set => name = value; }
-    public string Brand { get => brand; set => brand = value; }
-    public string Category { get => category; set => category = value; }
-    public int Quant { get => quant; set => quant = value; }
-    public double Cost { get => cost; set => cost = value; }
-    public double Price { get => price; set => price = value; }
 
     public void SetAll(string code, string name, string brand, string category, int quant, double cost, double price)
     {

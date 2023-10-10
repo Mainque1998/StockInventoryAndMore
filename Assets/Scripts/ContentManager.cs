@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
-using System;
 
 public class ContentManager : MonoBehaviour
 {
@@ -140,7 +139,7 @@ public class ContentManager : MonoBehaviour
         LoadFile();
     }
 
-    public void ReOrderContentByCode()//TODO: REPLICAR ESTO PARA TODOS LOS CAMPOS
+    public void ReOrderContentByCode()
     {
         products.Sort(CompareProductsByCode);
         ReLoadContent();
