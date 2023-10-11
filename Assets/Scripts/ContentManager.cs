@@ -24,6 +24,7 @@ public class ContentManager : MonoBehaviour
 
     private void LoadContent()
     {
+        Debug.Log("Cargando stock.");
         StreamReader sr = new StreamReader(filePath);
         string p = sr.ReadLine();
         while (p!= null)

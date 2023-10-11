@@ -20,7 +20,7 @@ public class PurchasePanelController : MonoBehaviour
     public GameObject NewSupplierPanel;
 
     private string filePath;
-    private List<string> suppliers;
+    private List<string> suppliers = new List<string>();
 
     private void Start()
     {
@@ -82,7 +82,10 @@ public class PurchasePanelController : MonoBehaviour
     public void ChangeSupplier()
     {
         if (suppliersDropdown.value == 1)
+        {
             NewSupplierPanel.SetActive(true);
+            suppliersDropdown.value = 0;
+        }
     }
     public void NewSupplier()
     {
@@ -93,13 +96,18 @@ public class PurchasePanelController : MonoBehaviour
             LoadFile();
             suppliersDropdown.options.Add(new TMP_Dropdown.OptionData(ns));
             suppliersDropdown.value = suppliersDropdown.options.Count;
-            NewSupplierPanel.SetActive(false);//TODO: make the new supplier panel
+            CloseNewSupplierPanel();
         }
         else
         {
             Debug.Log("ERROR: ya existe el proveedor "+ns+".");
         }
+    }
 
+    public void CloseNewSupplierPanel()
+    {
+        NewSupplierPanel.GetComponentInChildren<TMP_InputField>().text = "";
+        NewSupplierPanel.SetActive(false);
     }
 
     public void Acept()

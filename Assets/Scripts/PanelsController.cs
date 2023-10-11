@@ -8,7 +8,12 @@ public class PanelsController : MonoBehaviour
     public GameObject purchasesPanel;
     public GameObject salesPanel;
     public GameObject accountPanel;
-    private GameObject actualPanel = null;
+    private GameObject actualPanel;
+
+    private void Start()
+    {
+        actualPanel = productsPanel;
+    }
 
     private void CloseOldPanel()
     {

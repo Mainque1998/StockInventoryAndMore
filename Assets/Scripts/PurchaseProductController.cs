@@ -24,6 +24,7 @@ public class PurchaseProductController : MonoBehaviour
         if(dropdownName.value==1)
         {
             productPanel.OpenPanel();//TODO: it's must call SetNewProduct method
+            dropdownName.value = 0;
         }
         else
         {

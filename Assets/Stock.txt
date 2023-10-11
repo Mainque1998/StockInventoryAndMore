@@ -6,3 +6,4 @@
 22;Producto;Marca;Categoría;0;0;0
 55;Producto;Marca;Categoría;0;0;0
 11;b;C;D;0;0;0
+77;D;Marca;Categoría;0;0;0
