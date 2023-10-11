@@ -219,6 +219,24 @@ public class ContentManager : MonoBehaviour
         }
     }
 
+    public List<string> GetProductsNames()//Used from purchase panel controller
+    {
+        List<string> r = new List<string>();
+        foreach (Product pr in products)
+            if(!r.Contains(pr.Name))
+                r.Add(pr.Name);
+        return r;
+    }
+
+    public List<string> GetProductBrandsByName(string name)//Used from purchase panel controller
+    {
+        List<string> r = new List<string>();
+        foreach (Product pr in products)
+            if(pr.Name.Equals(name))
+                if(!r.Contains(pr.Brand))
+                    r.Add(pr.Brand);
+        return r;
+    }
 
     public void DebugProducts()
     {
