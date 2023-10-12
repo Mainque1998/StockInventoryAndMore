@@ -8,7 +8,7 @@ using System.IO;
 public class PurchasePanelController : MonoBehaviour
 {
     public ContentManager productsContentManager;
-    public ProductPanelController productPanel;
+    public NewProductPanelController newProductPanel;
 
     public GameObject purchasesContent;
     public TMP_InputField dayInput;//dd
@@ -76,7 +76,7 @@ public class PurchasePanelController : MonoBehaviour
     {
         GameObject newP = (GameObject)Instantiate(productContentPrefab);
         newP.transform.SetParent(productsContent.transform);
-        newP.GetComponent<PurchaseProductController>().SetCMandPC(productsContentManager, productPanel);
+        newP.GetComponent<PurchaseProductController>().SetCMandPC(productsContentManager, newProductPanel);
     }
 
     public void ChangeSupplier()
@@ -103,7 +103,6 @@ public class PurchasePanelController : MonoBehaviour
             Debug.Log("ERROR: ya existe el proveedor "+ns+".");
         }
     }
-
     public void CloseNewSupplierPanel()
     {
         NewSupplierPanel.GetComponentInChildren<TMP_InputField>().text = "";
