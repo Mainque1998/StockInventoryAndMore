@@ -10,13 +10,17 @@ public class PurchasePanelController : MonoBehaviour
     public ContentManager productsContentManager;
     public NewProductPanelController newProductPanel;
 
-    public GameObject purchasesContent;
+    public ContentPurchasesManager purchasesManager;
+
     public TMP_InputField dayInput;//dd
     public TMP_InputField monthInput;//mm
     public TMP_InputField yearInput;//yyyy
+
     public TMP_Dropdown suppliersDropdown;
+
     public GameObject productsContent;
     public GameObject productContentPrefab;
+
     public GameObject NewSupplierPanel;
 
     private string filePath;
@@ -55,7 +59,6 @@ public class PurchasePanelController : MonoBehaviour
     public void OpenPanel()
     {
         this.gameObject.SetActive(true);
-        //string actualDate = DateTime.UtcNow.ToString("dd-MM-yyyy");
         string[] actualDate = DateTime.UtcNow.ToString("dd-MM-yyyy").Split('-');
         dayInput.text = actualDate[0];
         monthInput.text = actualDate[1];
@@ -111,7 +114,23 @@ public class PurchasePanelController : MonoBehaviour
 
     public void Acept()
     {
-        //TODO: instantiate all the new purchases on the content purchases
+        string date = dayInput.text + "-" + monthInput.text + "-" + yearInput.text;//TODO: Check date.
+        string supplier = suppliersDropdown.options[suppliersDropdown.value].text;
+        if(supplier.Equals(" "))
+        {
+            Debug.Log("ERROR: Falta elegir proveedor");
+            //TODO: return error to user
+            return;
+        }
+
+        PurchaseProductController product;
+        foreach (Transform child in productsContent.transform)
+        {
+            product = child.gameObject.GetComponent<PurchaseProductController>();
+            if(!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetCost().Equals("0"))
+                purchasesManager.AddNewPurchase(date, product.GetName(), product.GetBrand(), supplier, product.GetQuant(), product.GetCost());
+        }
+
         ClosePanel();
     }
 }

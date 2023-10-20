@@ -57,7 +57,7 @@ public class ContentManager : MonoBehaviour
         if (products.Contains(new Product(code)))
         {
             Debug.Log("ERROR: Ya existe producto con el código " + code);
-            //TODO: devolver el error al usuario
+            //TODO: return error to user
             return;
         }
         products.Add(new Product(code, product, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price)));
@@ -76,7 +76,7 @@ public class ContentManager : MonoBehaviour
         if ((vars[0].text != code) && products.Contains(new Product(code)))
         {
             Debug.Log("ERROR: Ya existe producto con el código " + code);
-            //TODO: devolver el error al usuario
+            //TODO: return error to user
             return;
         }
 
@@ -135,6 +135,21 @@ public class ContentManager : MonoBehaviour
                     pr.Price = pr.Price * average;
                 }
         }
+
+        ReLoadContent();
+
+        LoadFile();
+    }
+
+    public void AddQuantToProduct(string name, string brand, int quant, double cost)
+    {
+        foreach (Product pr in products)
+            if ((pr.Name == name)&&(pr.Brand == brand))
+            {
+                pr.Quant += quant;
+                pr.Cost = cost;//This's ok?
+            }
+
         ReLoadContent();
 
         LoadFile();

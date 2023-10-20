@@ -1,0 +1,4 @@
+20-10-2023;A;B; ;1;100
+20-10-2023;D;Marca; ;2;27
+20-10-2023;Producto;Marca;Juan;0;0
+20-10-2023;Producton;S;Roberto;1000;8898

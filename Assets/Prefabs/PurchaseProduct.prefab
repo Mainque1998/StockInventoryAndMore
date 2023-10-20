@@ -2575,6 +2575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdownName: {fileID: 6060440272200915206}
   dropdownBrand: {fileID: 3760817839735619086}
+  inputQ: {fileID: 1553023720866250600}
+  inputC: {fileID: 535056898494353614}
 --- !u!1 &7515177705531635891
 GameObject:
   m_ObjectHideFlags: 0

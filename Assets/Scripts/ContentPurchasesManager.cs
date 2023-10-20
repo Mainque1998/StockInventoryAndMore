@@ -8,6 +8,8 @@ public class ContentPurchasesManager : MonoBehaviour
 {
     public GameObject purchasePrefab;
 
+    public ContentManager stockManager;
+
     private List<Purchase> purchases = new List<Purchase>();
 
     private string filePath;
@@ -50,7 +52,7 @@ public class ContentPurchasesManager : MonoBehaviour
         sw.Close();
     }
 
-    public void AddNewProduct(string date, string product, string brand, string supplier, string quant, string cost)
+    public void AddNewPurchase(string date, string product, string brand, string supplier, string quant, string cost)
     {
         purchases.Add(new Purchase(date, product, brand, supplier, int.Parse(quant), double.Parse(cost)));
         Debug.Log("Se agregó una compra nueva");
@@ -58,6 +60,8 @@ public class ContentPurchasesManager : MonoBehaviour
         GameObject newP = (GameObject)Instantiate(purchasePrefab);
         newP.transform.SetParent(this.transform);
         LoadPurchase(newP, date, product, brand, supplier, quant, cost);
+
+        stockManager.AddQuantToProduct(product, brand, int.Parse(quant), double.Parse(cost));
 
         LoadFile();
     }

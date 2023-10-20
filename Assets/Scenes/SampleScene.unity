@@ -7730,7 +7730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productsContentManager: {fileID: 1534825911}
   newProductPanel: {fileID: 587716870}
-  purchasesContent: {fileID: 1953192281}
+  purchasesManager: {fileID: 1953192286}
   dayInput: {fileID: 997886619}
   monthInput: {fileID: 366935125}
   yearInput: {fileID: 1367338479}
@@ -19998,7 +19998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.005004883}
+  m_AnchoredPosition: {x: 0, y: -0.005004883}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638673273
@@ -23732,6 +23732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   purchasePrefab: {fileID: 3225701432876852004, guid: f0676189ed9039d489fa6f4cda6fe27a, type: 3}
+  stockManager: {fileID: 1534825911}
 --- !u!1 &1965156687
 GameObject:
   m_ObjectHideFlags: 0
