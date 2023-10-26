@@ -141,18 +141,38 @@ public class ContentManager : MonoBehaviour
         LoadFile();
     }
 
-    public void AddQuantToProduct(string name, string brand, int quant, double cost)
+    public void AddQuantToProduct(string name, string brand, int quant, double cost)//Used from purchases manager
     {
         foreach (Product pr in products)
             if ((pr.Name == name)&&(pr.Brand == brand))
             {
                 pr.Quant += quant;
                 pr.Cost = cost;//This's ok?
+
+                ReLoadContent();
+                LoadFile();
             }
+    }
 
-        ReLoadContent();
+    public bool SubQuantToProduct(string name, string brand, int quant)//Used from sales manager
+    {
+        foreach (Product pr in products)
+            if ((pr.Name == name) && (pr.Brand == brand))
+            {
+                if (quant > pr.Quant)
+                {
+                    return false;
+                }
+                else
+                {
+                    pr.Quant -= quant;
 
-        LoadFile();
+                    ReLoadContent();
+                    LoadFile();
+                    return true;
+                }
+            }
+        return false;
     }
 
     public void ReOrderContentByCode()
@@ -235,7 +255,7 @@ public class ContentManager : MonoBehaviour
         }
     }
 
-    public List<string> GetProductsNames()//Used from purchase panel controller
+    public List<string> GetProductsNames()//Used from purchase and sale products controllers
     {
         List<string> r = new List<string>();
         foreach (Product pr in products)
@@ -244,7 +264,7 @@ public class ContentManager : MonoBehaviour
         return r;
     }
 
-    public List<string> GetProductBrandsByName(string name)//Used from purchase panel controller
+    public List<string> GetProductBrandsByName(string name)//Used from purchase and sale products controllers
     {
         List<string> r = new List<string>();
         foreach (Product pr in products)
@@ -252,6 +272,14 @@ public class ContentManager : MonoBehaviour
                 if(!r.Contains(pr.Brand))
                     r.Add(pr.Brand);
         return r;
+    }
+
+    public double GetProductPrice(string name, string brand)//Used from sale product controller
+    {
+        foreach (Product pr in products)
+            if (pr.Name.Equals(name) && pr.Brand.Equals(brand))
+                return pr.Price;
+        return -1;//Error, product doesn't exist
     }
 
     public void DebugProducts()

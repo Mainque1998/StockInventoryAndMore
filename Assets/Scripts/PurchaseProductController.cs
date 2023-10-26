@@ -5,18 +5,18 @@ using TMPro;
 
 public class PurchaseProductController : MonoBehaviour
 {
-    private ContentManager productsContentManager;
+    private ContentManager stockManager;
     public TMP_Dropdown dropdownName;
     public TMP_Dropdown dropdownBrand;
     public TMP_InputField inputQ;
     public TMP_InputField inputC;
     private NewProductPanelController PanelController;
 
-    public void SetCMandPC(ContentManager pCM, NewProductPanelController pPC)
+    public void SetSMandPC(ContentManager sM, NewProductPanelController pPC)
     {
-        productsContentManager = pCM;
+        stockManager = sM;
         dropdownName.options.Add(new TMP_Dropdown.OptionData("Nuevo"));
-        dropdownName.AddOptions(productsContentManager.GetProductsNames());
+        dropdownName.AddOptions(stockManager.GetProductsNames());
         PanelController = pPC;
     }
 
@@ -31,7 +31,7 @@ public class PurchaseProductController : MonoBehaviour
         else
         {
             string n = dropdownName.options[dropdownName.value].text;
-            dropdownBrand.AddOptions(productsContentManager.GetProductBrandsByName(n));
+            dropdownBrand.AddOptions(stockManager.GetProductBrandsByName(n));
         }
     }
 

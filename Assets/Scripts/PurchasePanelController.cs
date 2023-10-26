@@ -7,7 +7,7 @@ using System.IO;
 
 public class PurchasePanelController : MonoBehaviour
 {
-    public ContentManager productsContentManager;
+    public ContentManager stockManager;
     public NewProductPanelController newProductPanel;
 
     public ContentPurchasesManager purchasesManager;
@@ -79,7 +79,7 @@ public class PurchasePanelController : MonoBehaviour
     {
         GameObject newP = (GameObject)Instantiate(productContentPrefab);
         newP.transform.SetParent(productsContent.transform);
-        newP.GetComponent<PurchaseProductController>().SetCMandPC(productsContentManager, newProductPanel);
+        newP.GetComponent<PurchaseProductController>().SetSMandPC(stockManager, newProductPanel);
     }
 
     public void ChangeSupplier()
@@ -127,7 +127,7 @@ public class PurchasePanelController : MonoBehaviour
         foreach (Transform child in productsContent.transform)
         {
             product = child.gameObject.GetComponent<PurchaseProductController>();
-            if(!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetCost().Equals("0"))
+            if(!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetQuant().Equals("0")  && !product.GetCost().Equals("0"))
                 purchasesManager.AddNewPurchase(date, product.GetName(), product.GetBrand(), supplier, product.GetQuant(), product.GetCost());
         }
 
