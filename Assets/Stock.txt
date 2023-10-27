@@ -1,7 +1,7 @@
 00000002;a;B;F;0;2;54
 00000001;A;B;C;1;777;1299
 11;B;C;D;90;500;999
-77;D;Marca;Categoría;0;0;0
+77;D;Marca;Categoría;47;55;120
 00000003;Producto;B;Categoría;0;0;11,25
 00000020;Producto;A;Categoría;1;1;15
-27;Producton;S;Categoría;990;8898;14999
+27;Producton;S;Categoría;986;8898;14999

@@ -124,13 +124,19 @@ public class PurchasePanelController : MonoBehaviour
         }
 
         PurchaseProductController product;
+        bool error = false;
         foreach (Transform child in productsContent.transform)
         {
             product = child.gameObject.GetComponent<PurchaseProductController>();
             if(!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetQuant().Equals("0")  && !product.GetCost().Equals("0"))
                 purchasesManager.AddNewPurchase(date, product.GetName(), product.GetBrand(), supplier, product.GetQuant(), product.GetCost());
+            else
+            {
+                Debug.Log("ERROR: Un producto a comprar esta mal definido, modificar o eliminar");
+                error = true;
+            }
         }
-
-        ClosePanel();
+        if(!error)
+            ClosePanel();
     }
 }

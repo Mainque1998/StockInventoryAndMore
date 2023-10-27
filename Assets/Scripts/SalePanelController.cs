@@ -50,20 +50,27 @@ public class SalePanelController : MonoBehaviour
         
         SaleProductController product;
         bool error = false;
+        bool actualError = false;
         foreach (Transform child in productsContent.transform)
         {
             product = child.gameObject.GetComponent<SaleProductController>();
-            //TODO: Check if the add is correctly done
-            if (!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetQuant().Equals("0"))
+            actualError = product.GetName().Equals(" ") || product.GetBrand().Equals(" ") || product.GetQuant().Equals("0");
+            if (!actualError)
             {
-                error = !salesManager.AddNewSale(date, product.GetName(), product.GetBrand(), product.GetQuant(), product.GetPrice());
-                if(!error)
+                actualError = !salesManager.AddNewSale(date, product.GetName(), product.GetBrand(), product.GetQuant(), product.GetPrice());
+                if (!actualError)
                     Destroy(child.gameObject);
+                else
+                    error = true;
+            }
+            else
+            {
+                Debug.Log("ERROR: Un producto a vender esta mal definido, modificar o eliminar");
+                error = true;
             }
         }
-
         if(!error)
             ClosePanel();
-        //So, the sales that doesn't have errors are made, the sales with errors stay in the panel
+        //So, the sales without errors are made, the sales with errors stay in the panel
     }
 }
