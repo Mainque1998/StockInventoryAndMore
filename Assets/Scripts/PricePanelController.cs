@@ -8,17 +8,18 @@ public class PricePanelController : MonoBehaviour
     public GameObject panel;
     public GameObject dropbox;
     public GameObject filterInput;
+    public TMP_InputField avg;
+    public GameObject content;
 
     public void ChangePrices()
     {
         TMP_InputField filter = filterInput.GetComponent<TMP_InputField>();
-        TMP_InputField avg = GameObject.Find("AvgInput").GetComponent<TMP_InputField>();
         TMP_Dropdown filters = dropbox.GetComponent<TMP_Dropdown>();
 
-        ContentManager contentScript = GameObject.Find("Content").GetComponent<ContentManager>();
+        ContentManager contentScript = content.GetComponent<ContentManager>();
         contentScript.UpdatePriceByFilters(filters.value, filter.text, int.Parse(avg.text));
 
-        ClosePanel();//Capaz se pueda dejar abierto, para más modificaciones
+        ClosePanel();//Maybe we can leave it open
     }
 
     public void ClosePanel()
@@ -27,8 +28,7 @@ public class PricePanelController : MonoBehaviour
         inputField.text = "";
         filterInput.SetActive(false);
 
-        inputField = GameObject.Find("AvgInput").GetComponent<TMP_InputField>();
-        inputField.text = "0";
+        avg.text = "0";
 
         TMP_Dropdown filters = dropbox.GetComponent<TMP_Dropdown>();
         filters.value = 0;

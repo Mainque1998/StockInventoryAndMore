@@ -2,62 +2,62 @@
 
 public class Product
 {
-    private string codigo= "00000000";
-    private string producto= "Producto";
-    private string marca= "Marca";
-    private string categoria= "Categoría";
-    private int cant =0;
-    private double costo = 0;
-    private double precio =0;
+    private string code= "00000000";
+    private string name= "Producto";
+    private string brand= "Marca";
+    private string category= "Categoría";
+    private int quant =0;
+    private double cost = 0;
+    private double price =0;
 
-    public Product(string codigo, string producto, string marca, string categoria, int cant, double costo, double precio)
+    public string Code { get => code; set => code = value; }
+    public string Name { get => name; set => name = value; }
+    public string Brand { get => brand; set => brand = value; }
+    public string Category { get => category; set => category = value; }
+    public int Quant { get => quant; set => quant = value; }
+    public double Cost { get => cost; set => cost = value; }
+    public double Price { get => price; set => price = value; }
+
+    public Product(string code, string name, string brand, string category, int quant, double cost, double price)
     {
-        this.codigo = codigo;
-        this.producto = producto;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.cant = cant;
-        this.costo = costo;
-        this.precio = precio;
+        Code = code;
+        Name = name;
+        Brand = brand;
+        Category = category;
+        Quant = quant;
+        Cost = cost;
+        Price = price;
     }
 
-    public Product(string codigo)
+    public Product(string code)
     {
-        this.codigo = codigo;
+        Code = code;
     }
 
-    public string Codigo { get => codigo; set => codigo = value; }
-    public string Producto { get => producto; set => producto = value; }
-    public string Marca { get => marca; set => marca = value; }
-    public string Categoria { get => categoria; set => categoria = value; }
-    public int Cant { get => cant; set => cant = value; }
-    public double Costo { get => costo; set => costo = value; }
-    public double Precio { get => precio; set => precio = value; }
-
-    public void SetAll(string codigo, string producto, string marca, string categoria, int cant, double costo, double precio)
+    public void SetAll(string code, string name, string brand, string category, int quant, double cost, double price)
     {
-        this.codigo = codigo;
-        this.producto = producto;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.cant = cant;
-        this.costo = costo;
-        this.precio = precio;
+        Code = code;
+        Name = name;
+        Brand = brand;
+        Category = category;
+        Quant = quant;
+        Cost = cost;
+        Price = price;
     }
 
     public override bool Equals(object obj)
     {
-        return obj is Product product &&
-               Codigo == product.Codigo;
+        return obj is Product p &&
+               Code == p.Code;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Codigo);
+        return HashCode.Combine(Code);
     }
 
     public override string ToString()
     {
-        return this.codigo + " " + this.producto + " " + this.marca + " " + this.categoria + " " + this.cant + " " + this.costo + " " + this.precio;
+        return Code + ";" + Name + ";" + Brand + ";" + Category + ";" + Quant + ";" + Cost + ";" + Price;
     }
 }
