@@ -10,6 +10,7 @@ public class NewProductPanelController : MonoBehaviour
     public TMP_InputField nameInput;
     public TMP_InputField brandInput;
     public TMP_InputField categoryInput;
+    public TMP_InputField priceInput;
     public ContentManager content;
 
     public void OpenPanel(GameObject pp)
@@ -24,12 +25,13 @@ public class NewProductPanelController : MonoBehaviour
         nameInput.text = "Producto";
         brandInput.text = "Marca";
         categoryInput.text = "Categoría";
+        priceInput.text = "0";
         this.gameObject.SetActive(false);
     }
 
     public void Accept()
     {
-        content.AddNewProduct(codeInput.text, nameInput.text, brandInput.text, categoryInput.text, "0", "0", "0");
+        content.AddNewProduct(codeInput.text, nameInput.text, brandInput.text, categoryInput.text, "0", "0", priceInput.text);
         productPurchase.GetComponent<PurchaseProductController>().SetNewProduct(nameInput.text, brandInput.text);
 
         ClosePanel();

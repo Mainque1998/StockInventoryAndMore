@@ -64,6 +64,6 @@ public class SalePanelController : MonoBehaviour
 
         if(!error)
             ClosePanel();
-        //So, the sales that doesn't have errors are maked, the sales with errors stay in the panel
+        //So, the sales that doesn't have errors are made, the sales with errors stay in the panel
     }
 }

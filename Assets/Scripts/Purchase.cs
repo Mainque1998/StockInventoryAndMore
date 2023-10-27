@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Purchase : MonoBehaviour
+public class Purchase
 {
     private string date;
     private string productName;

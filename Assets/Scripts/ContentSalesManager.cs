@@ -70,7 +70,7 @@ public class ContentSalesManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("ERROR: No alcanza el stock para esta venta");
+            Debug.Log("ERROR: No alcanza el stock para la venta del producto "+product+" de la marca "+brand);
             //TODO: return error to user
             return false;
         }
