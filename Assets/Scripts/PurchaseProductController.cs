@@ -35,12 +35,28 @@ public class PurchaseProductController : MonoBehaviour
         }
     }
 
-    public void SetNewProduct(string name, string brand)
+    public void AddProduct(string name)
     {
         dropdownName.options.Add(new TMP_Dropdown.OptionData(name));
-        dropdownName.value = dropdownName.options.Count -1;
-        dropdownBrand.options.Add(new TMP_Dropdown.OptionData(brand));
-        dropdownBrand.value = 0;
+    }
+
+    public void SetProduct(string name, string brand)
+    {
+        for (int i = 0; i < dropdownName.options.Count; i++)
+            if (dropdownName.options[i].text.Equals(name))
+                dropdownName.value = i;
+
+        for (int i = 0; i < dropdownBrand.options.Count; i++)
+            if (dropdownBrand.options[i].text.Equals(brand))
+                dropdownBrand.value = i;
+    }
+
+    public bool ContainsName(string name)
+    {
+        foreach (TMP_Dropdown.OptionData o in dropdownName.options)
+            if (o.text.Equals(name))
+                return true;
+        return false;
     }
 
     public void DeleteProduct()

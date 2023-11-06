@@ -52,14 +52,14 @@ public class ContentManager : MonoBehaviour
         sw.Close();
     }
 
-    public void AddNewProduct(string code, string name, string brand, string category, string quant, string cost, string price)
+    public bool AddNewProduct(string code, string name, string brand, string category, string quant, string cost, string price)
     {
         Product p = new Product(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         if (products.Contains(p))
         {
             Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre "+ name + " de la marca "+brand);
             //TODO: return error to user
-            return;
+            return false;
         }
         products.Add(p);
         Debug.Log("Se agregó el producto: " + code + ", nombre " + name + " de la marca " + brand);
@@ -69,9 +69,11 @@ public class ContentManager : MonoBehaviour
         LoadProduct(newP, code, name, brand, category, quant, cost, price);
 
         LoadFile();
+
+        return true;
     }
 
-    public void UpdateProduct(GameObject p, string code, string name, string brand, string category, string quant, string cost, string price)
+    public bool UpdateProduct(GameObject p, string code, string name, string brand, string category, string quant, string cost, string price)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
         if ( (vars[0].text != code || vars[1].text != name || vars[2].text != brand) //It mean, they're the same keys
@@ -79,7 +81,7 @@ public class ContentManager : MonoBehaviour
         {
             Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre " + name + " de la marca " + brand);
             //TODO: return error to user
-            return;
+            return false;
         }
 
         int posP = products.IndexOf(new Product(vars[0].text));
@@ -89,6 +91,8 @@ public class ContentManager : MonoBehaviour
         LoadProduct(p, code, name, brand, category, quant, cost, price);
 
         LoadFile();
+
+        return true;
     }
 
     public void DeleteProduct(GameObject p)

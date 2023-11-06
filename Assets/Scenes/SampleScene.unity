@@ -9962,7 +9962,8 @@ MonoBehaviour:
   brandInput: {fileID: 1491130304}
   categoryInput: {fileID: 1333823918}
   priceInput: {fileID: 295678426}
-  content: {fileID: 1534825911}
+  stockManager: {fileID: 1534825911}
+  contentProductPurchase: {fileID: 518965511}
 --- !u!1 &589963696
 GameObject:
   m_ObjectHideFlags: 0
