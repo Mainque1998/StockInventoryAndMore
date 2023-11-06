@@ -33,7 +33,12 @@ public class Product
     {
         Code = code;
     }
-
+    public Product(string code, string name, string brand)
+    {
+        Code = code;
+        Name = name;
+        Brand = brand;
+    }
     public void SetAll(string code, string name, string brand, string category, int quant, double cost, double price)
     {
         Code = code;
@@ -48,7 +53,9 @@ public class Product
     public override bool Equals(object obj)
     {
         return obj is Product p &&
-               Code == p.Code;
+               (Code == p.Code //Code is the key
+                || (Name == p.Name && Brand == p.Brand) //But name and brand are also secundary keys
+               );
     }
 
     public override int GetHashCode()

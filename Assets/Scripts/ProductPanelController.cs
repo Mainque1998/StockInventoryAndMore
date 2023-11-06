@@ -63,12 +63,14 @@ public class ProductPanelController : MonoBehaviour
     public void Accept()
     {
         ContentManager contentScript = content.GetComponent<ContentManager>();
+        bool error = false;
         if (newProduct)
-            contentScript.AddNewProduct(codeInput.text, nameInput.text, brandInput.text, categoryInput.text, quantInput.text, costInput.text, priceInput.text);
+            error = !contentScript.AddNewProduct(codeInput.text, nameInput.text, brandInput.text, categoryInput.text, quantInput.text, costInput.text, priceInput.text);
         else
-            contentScript.UpdateProduct(product, codeInput.text, nameInput.text, brandInput.text, categoryInput.text, quantInput.text, costInput.text, priceInput.text);
+            error = !contentScript.UpdateProduct(product, codeInput.text, nameInput.text, brandInput.text, categoryInput.text, quantInput.text, costInput.text, priceInput.text);
 
-        ClosePanel();
+        if(!error)
+            ClosePanel();
     }
 
     public void Delete()

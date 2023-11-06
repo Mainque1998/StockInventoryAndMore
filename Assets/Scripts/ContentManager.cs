@@ -52,41 +52,47 @@ public class ContentManager : MonoBehaviour
         sw.Close();
     }
 
-    public void AddNewProduct(string code, string product, string brand, string category, string quant, string cost, string price)
+    public bool AddNewProduct(string code, string name, string brand, string category, string quant, string cost, string price)
     {
-        if (products.Contains(new Product(code)))
+        Product p = new Product(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
+        if (products.Contains(p))
         {
-            Debug.Log("ERROR: Ya existe producto con el código " + code);
+            Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre "+ name + " de la marca "+brand);
             //TODO: return error to user
-            return;
+            return false;
         }
-        products.Add(new Product(code, product, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price)));
-        Debug.Log("Se agregó producto nuevo de código " + code);
+        products.Add(p);
+        Debug.Log("Se agregó el producto: " + code + ", nombre " + name + " de la marca " + brand);
 
         GameObject newP = (GameObject)Instantiate(productPrefab);
         newP.transform.SetParent(this.transform);
-        LoadProduct(newP, code, product, brand, category, quant, cost, price);
+        LoadProduct(newP, code, name, brand, category, quant, cost, price);
 
         LoadFile();
+
+        return true;
     }
 
-    public void UpdateProduct(GameObject p, string code, string product, string brand, string category, string quant, string cost, string price)
+    public bool UpdateProduct(GameObject p, string code, string name, string brand, string category, string quant, string cost, string price)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
-        if ((vars[0].text != code) && products.Contains(new Product(code)))
+        if ( (vars[0].text != code || vars[1].text != name || vars[2].text != brand) //It mean, they're the same keys
+            && products.Contains(new Product(code, name, brand)))
         {
-            Debug.Log("ERROR: Ya existe producto con el código " + code);
+            Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre " + name + " de la marca " + brand);
             //TODO: return error to user
-            return;
+            return false;
         }
 
         int posP = products.IndexOf(new Product(vars[0].text));
-        products[posP].SetAll(code, product, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
+        products[posP].SetAll(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         Debug.Log("Se modificó el producto con código " + vars[0].text);
 
-        LoadProduct(p, code, product, brand, category, quant, cost, price);
+        LoadProduct(p, code, name, brand, category, quant, cost, price);
 
         LoadFile();
+
+        return true;
     }
 
     public void DeleteProduct(GameObject p)
