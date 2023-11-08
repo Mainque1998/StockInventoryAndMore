@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
 
 public class ContentManager : MonoBehaviour
 {
@@ -33,11 +34,11 @@ public class ContentManager : MonoBehaviour
         {
             string[] vars = p.Split(';');
 
-            products.Add(new Product(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5]), double.Parse(vars[6])));
+            products.Add(new Product(vars[0], vars[1], vars[2], vars[3], int.Parse(vars[4]), double.Parse(vars[5]), double.Parse(vars[6]), vars[7]));
             
             GameObject newP = (GameObject)Instantiate(productPrefab);
             newP.transform.SetParent(this.transform);
-            LoadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6]);
+            LoadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], vars[7]);
 
             p = sr.ReadLine();
         }
@@ -56,7 +57,8 @@ public class ContentManager : MonoBehaviour
 
     public bool AddNewProduct(string code, string name, string brand, string category, string quant, string cost, string price)
     {
-        Product p = new Product(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
+        string update = DateTime.Now.ToString("dd-MM-yyyy");
+        Product p = new Product(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price), update);
         if (products.Contains(p))
         {
             Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre " + name + " de la marca " + brand);
@@ -68,7 +70,7 @@ public class ContentManager : MonoBehaviour
 
         GameObject newP = (GameObject)Instantiate(productPrefab);
         newP.transform.SetParent(this.transform);
-        LoadProduct(newP, code, name, brand, category, quant, cost, price);
+        LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
 
         LoadFile();
 
@@ -90,7 +92,7 @@ public class ContentManager : MonoBehaviour
         products[posP].SetAll(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         Debug.Log("Se modificó el producto con código " + vars[0].text);
 
-        LoadProduct(p, code, name, brand, category, quant, cost, price);
+        LoadProduct(p, code, name, brand, category, quant, cost, price, products[posP].Update);
 
         LoadFile();
 
@@ -106,7 +108,7 @@ public class ContentManager : MonoBehaviour
         LoadFile();
     }
 
-    private void LoadProduct(GameObject p, string code, string product, string brand, string category, string quant, string cost, string price)
+    private void LoadProduct(GameObject p, string code, string product, string brand, string category, string quant, string cost, string price, string update)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
         vars[0].text = code;
@@ -116,6 +118,7 @@ public class ContentManager : MonoBehaviour
         vars[4].text = quant;
         vars[5].text = cost;
         vars[6].text = price;
+        vars[7].text = update;
     }
 
     public void UpdatePriceByFilters(int typeFilter, string filter, int avg)
@@ -125,28 +128,29 @@ public class ContentManager : MonoBehaviour
         if (typeFilter == 0)//Change all
         {
             foreach (Product pr in products)
-                pr.Price = pr.Price * average;
+                UpdatePrice(pr, average);
         }
         if (typeFilter == 1)//Change by Category
         {
             foreach (Product pr in products)
                 if (pr.Category == filter)
-                {
-                    pr.Price = pr.Price * average;
-                }
+                    UpdatePrice(pr, average);
         }
         if (typeFilter == 2)//Change by Brand
         {
             foreach (Product pr in products)
                 if (pr.Brand == filter)
-                {
-                    pr.Price = pr.Price * average;
-                }
+                    UpdatePrice(pr, average);
         }
 
         ReLoadContent();
 
         LoadFile();
+    }
+    private void UpdatePrice(Product pr, double avg)
+    {
+        pr.Price = pr.Price * avg;
+        pr.Update = DateTime.Now.ToString("dd-MM-yyyy");
     }
 
     public void AddQuantToProduct(string name, string brand, int quant, double cost)//Used from purchases manager
@@ -247,6 +251,20 @@ public class ContentManager : MonoBehaviour
     {
         return p1.Price.CompareTo(p2.Price);
     }
+    public void ReOrderContentByUpdate()
+    {
+        products.Sort(CompareProductsByUpdate);
+        ReLoadContent();
+    }
+    private static int CompareProductsByUpdate(Product p1, Product p2)
+    {
+        string[] date = p1.Update.Split('-');
+        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+        date = p2.Update.Split('-');
+        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+
+        return d1.CompareTo(d2);
+    }
 
     private void ReLoadContent()
     {
@@ -259,7 +277,7 @@ public class ContentManager : MonoBehaviour
         {
             GameObject newP = (GameObject)Instantiate(productPrefab);
             newP.transform.SetParent(this.transform);
-            LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString());
+            LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
         }
     }
 

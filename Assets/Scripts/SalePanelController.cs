@@ -23,7 +23,7 @@ public class SalePanelController : MonoBehaviour
     public void OpenPanel()
     {
         this.gameObject.SetActive(true);
-        string[] actualDate = DateTime.UtcNow.ToString("dd-MM-yyyy").Split('-');
+        string[] actualDate = DateTime.Now.ToString("dd-MM-yyyy").Split('-');
         dayInput.text = actualDate[0];
         monthInput.text = actualDate[1];
         yearInput.text = actualDate[2];

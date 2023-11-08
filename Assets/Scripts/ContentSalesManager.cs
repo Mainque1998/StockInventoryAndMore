@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using TMPro;
+using System;
 
 public class ContentSalesManager : MonoBehaviour
 {
@@ -96,7 +97,12 @@ public class ContentSalesManager : MonoBehaviour
     }
     private static int CompareSalesByDate(Sale p1, Sale p2)
     {
-        return p1.Date.CompareTo(p2.Date);
+        string[] date = p1.Date.Split('-');
+        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+        date = p2.Date.Split('-');
+        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+
+        return d1.CompareTo(d2);
     }
     public void ReOrderContentByProductName()
     {

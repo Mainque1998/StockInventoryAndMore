@@ -9,6 +9,7 @@ public class Product
     private int quant =0;
     private double cost = 0;
     private double price =0;
+    private string update = DateTime.Now.ToString("dd-MM-yyyy"); //Last price update
 
     public string Code { get => code; set => code = value; }
     public string Name { get => name; set => name = value; }
@@ -17,8 +18,9 @@ public class Product
     public int Quant { get => quant; set => quant = value; }
     public double Cost { get => cost; set => cost = value; }
     public double Price { get => price; set => price = value; }
+    public string Update { get => update; set => update = value; }
 
-    public Product(string code, string name, string brand, string category, int quant, double cost, double price)
+    public Product(string code, string name, string brand, string category, int quant, double cost, double price, string update)
     {
         Code = code;
         Name = name;
@@ -27,6 +29,7 @@ public class Product
         Quant = quant;
         Cost = cost;
         Price = price;
+        Update = update;
     }
 
     public Product(string code)
@@ -47,7 +50,11 @@ public class Product
         Category = category;
         Quant = quant;
         Cost = cost;
-        Price = price;
+        if(Price != price)
+        {
+            Update = DateTime.Now.ToString("dd-MM-yyyy");
+            Price = price;
+        }
     }
 
     public override bool Equals(object obj)
@@ -65,6 +72,6 @@ public class Product
 
     public override string ToString()
     {
-        return Code + ";" + Name + ";" + Brand + ";" + Category + ";" + Quant + ";" + Cost + ";" + Price;
+        return Code + ";" + Name + ";" + Brand + ";" + Category + ";" + Quant + ";" + Cost + ";" + Price + ";" + Update;
     }
 }
