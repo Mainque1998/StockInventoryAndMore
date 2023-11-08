@@ -4,4 +4,4 @@
 77;D;Marca;Categoría;47;55;120
 00000003;Producto;B;Categoría;0;0;11,25
 00000020;Producto;A;Categoría;1;1;15
-27;Producton;S;A;986;8898;14999
+27;Producton;S;A;985;8898;14999

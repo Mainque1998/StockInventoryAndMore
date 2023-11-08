@@ -26,6 +26,8 @@ public class PurchasePanelController : MonoBehaviour
     private string filePath;
     private List<string> suppliers = new List<string>();
 
+    public NotificationPanelController notification;
+
     private void Start()
     {
         suppliersDropdown.options.Add(new TMP_Dropdown.OptionData("Nuevo"));
@@ -104,6 +106,7 @@ public class PurchasePanelController : MonoBehaviour
         else
         {
             Debug.Log("ERROR: ya existe el proveedor "+ns+".");
+            notification.OpenPanel("ERROR", "Ya existe el proveedor " + ns + ". \nPor favor cambie el nombre o cancele la operación.");
         }
     }
     public void CloseNewSupplierPanel()
@@ -119,24 +122,28 @@ public class PurchasePanelController : MonoBehaviour
         if(supplier.Equals(" "))
         {
             Debug.Log("ERROR: Falta elegir proveedor");
-            //TODO: return error to user
+            notification.OpenPanel("ERROR", "Falta elegir el proveedor de la compra. \nPor favor elija uno o cancele la operación.");
             return;
         }
 
         PurchaseProductController product;
-        bool error = false;
         foreach (Transform child in productsContent.transform)
         {
             product = child.gameObject.GetComponent<PurchaseProductController>();
-            if(!product.GetName().Equals(" ") && !product.GetBrand().Equals(" ") && !product.GetQuant().Equals("0")  && !product.GetCost().Equals("0"))
-                purchasesManager.AddNewPurchase(date, product.GetName(), product.GetBrand(), supplier, product.GetQuant(), product.GetCost());
-            else
+            if ( product.GetName().Equals(" ") || product.GetBrand().Equals(" ") || product.GetQuant().Equals("0") || product.GetCost().Equals("0") )
             {
-                Debug.Log("ERROR: Un producto a comprar esta mal definido, modificar o eliminar");
-                error = true;
+                Debug.Log("ERROR: Al menos un producto a comprar esta mal definido");
+                notification.OpenPanel("ERROR", "Uno o más productos de la compra están mal definidos. \nPor favor modifique los datos de los productos o cancele la compra.");
+                return;
             }
         }
-        if(!error)
-            ClosePanel();
+
+        foreach (Transform child in productsContent.transform)
+        {
+            product = child.gameObject.GetComponent<PurchaseProductController>();
+            purchasesManager.AddNewPurchase(date, product.GetName(), product.GetBrand(), supplier, product.GetQuant(), product.GetCost());
+        }
+        
+        ClosePanel();
     }
 }

@@ -14,6 +14,8 @@ public class ContentSalesManager : MonoBehaviour
 
     private string filePath;
 
+    public NotificationPanelController notification;
+
     private void Start()
     {
         filePath = Application.dataPath + "/Ventas.txt";
@@ -54,6 +56,7 @@ public class ContentSalesManager : MonoBehaviour
 
     public bool AddNewSale(string date, string product, string brand, string quant, string price)
     {
+        //TODO: maybe we can first check the stock, and in case of insuficience notify the user
         if (stockManager.SubQuantToProduct(product, brand, int.Parse(quant)))
         {
             Debug.Log("Se agregó una venta nueva");
@@ -70,8 +73,8 @@ public class ContentSalesManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("ERROR: No alcanza el stock para la venta del producto "+product+" de la marca "+brand);
-            //TODO: return error to user
+            Debug.Log("ERROR: Stock insuficiente para la venta del producto "+product+" de la marca "+brand);
+            notification.OpenPanel("ERROR", "Stock insuficiente para la venta del producto " + product + " de la marca " + brand + ". \nPor favor modifique los datos o cancele la venta.");
             return false;
         }
     }

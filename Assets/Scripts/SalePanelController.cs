@@ -18,6 +18,8 @@ public class SalePanelController : MonoBehaviour
     public GameObject productsContent;
     public GameObject productContentPrefab;
 
+    public NotificationPanelController notification;
+
     public void OpenPanel()
     {
         this.gameObject.SetActive(true);
@@ -50,27 +52,27 @@ public class SalePanelController : MonoBehaviour
         
         SaleProductController product;
         bool error = false;
-        bool actualError = false;
         foreach (Transform child in productsContent.transform)
         {
             product = child.gameObject.GetComponent<SaleProductController>();
-            actualError = product.GetName().Equals(" ") || product.GetBrand().Equals(" ") || product.GetQuant().Equals("0");
-            if (!actualError)
+            if (product.GetName().Equals(" ") || product.GetBrand().Equals(" ") || product.GetQuant().Equals("0"))
             {
-                actualError = !salesManager.AddNewSale(date, product.GetName(), product.GetBrand(), product.GetQuant(), product.GetPrice());
-                if (!actualError)
-                    Destroy(child.gameObject);
-                else
-                    error = true;
-            }
-            else
-            {
-                Debug.Log("ERROR: Un producto a vender esta mal definido, modificar o eliminar");
-                error = true;
+                Debug.Log("ERROR: Al menos un producto a vender esta mal definido");
+                notification.OpenPanel("ERROR", "Uno o más productos de la venta están mal definidos. \nPor favor modifique los datos de los productos o cancele la venta.");
+                return;
             }
         }
+
+        foreach (Transform child in productsContent.transform)
+        {
+            product = child.gameObject.GetComponent<SaleProductController>();
+            if (salesManager.AddNewSale(date, product.GetName(), product.GetBrand(), product.GetQuant(), product.GetPrice()))
+                Destroy(child.gameObject);
+            else
+                error = true;
+        }
+
         if(!error)
             ClosePanel();
-        //So, the sales without errors are made, the sales with errors stay in the panel
     }
 }

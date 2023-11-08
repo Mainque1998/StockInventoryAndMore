@@ -13,6 +13,8 @@ public class ContentManager : MonoBehaviour
 
     private string filePath;
 
+    public NotificationPanelController notification;
+
     private void Start()
     {
         filePath = Application.dataPath + "/Stock.txt";
@@ -57,8 +59,8 @@ public class ContentManager : MonoBehaviour
         Product p = new Product(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         if (products.Contains(p))
         {
-            Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre "+ name + " de la marca "+brand);
-            //TODO: return error to user
+            Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre " + name + " de la marca " + brand);
+            notification.OpenPanel("ERROR", "Ya existe el producto: " + code + ", " + name + " de la marca " + brand +". \nPor favor modifique los datos o cancele la operación.");
             return false;
         }
         products.Add(p);
@@ -79,8 +81,8 @@ public class ContentManager : MonoBehaviour
         if ( (vars[0].text != code || vars[1].text != name || vars[2].text != brand) //It mean, they're the same keys
             && products.Contains(new Product(code, name, brand)))
         {
-            Debug.Log("ERROR: Ya existe el producto: " + code + ", nombre " + name + " de la marca " + brand);
-            //TODO: return error to user
+            Debug.Log("ERROR: Ya existe el producto: " + code + ", " + name + " de la marca " + brand);
+            notification.OpenPanel("ERROR", "Ya existe el producto: " + code + ", " + name + " de la marca " + brand + "." + "\nPor favor modifique los datos o cancele la operación.");
             return false;
         }
 
