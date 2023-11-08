@@ -7464,6 +7464,11 @@ MonoBehaviour:
   purchasesPanel: {fileID: 1140469834}
   salesPanel: {fileID: 873070353}
   accountPanel: {fileID: 0}
+  productsButton: {fileID: 427475975}
+  purchasesButton: {fileID: 1587299996}
+  salesButton: {fileID: 17297315}
+  accountButton: {fileID: 2080547671}
+  selectedColor: {r: 0.2627451, g: 0.050980393, b: 0.24705882, a: 1}
 --- !u!1 &434363582
 GameObject:
   m_ObjectHideFlags: 0
