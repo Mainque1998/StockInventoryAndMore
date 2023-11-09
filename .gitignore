@@ -73,6 +73,10 @@ crashlytics-build.properties
 
 # App files
 /[Aa]ssets/Compras.txt
+/[Aa]ssets/Compras.txt.meta
 /[Aa]ssets/Proveedores.txt
+/[Aa]ssets/Proveedores.txt.meta
 /[Aa]ssets/Stock.txt
+/[Aa]ssets/Stock.txt.meta
 /[Aa]ssets/Ventas.txt
+/[Aa]ssets/Ventas.txt.meta
