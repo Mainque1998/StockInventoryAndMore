@@ -6,31 +6,25 @@ using TMPro;
 public class PricePanelController : MonoBehaviour
 {
     public GameObject panel;
-    public GameObject dropbox;
-    public GameObject filterInput;
+    public TMP_Dropdown filters;
+    public TMP_Dropdown filter;
     public TMP_InputField avg;
-    public GameObject content;
+    public ContentManager stockManager;
 
     public void ChangePrices()
     {
-        TMP_InputField filter = filterInput.GetComponent<TMP_InputField>();
-        TMP_Dropdown filters = dropbox.GetComponent<TMP_Dropdown>();
-
-        ContentManager contentScript = content.GetComponent<ContentManager>();
-        contentScript.UpdatePriceByFilters(filters.value, filter.text, int.Parse(avg.text));
+        stockManager.UpdatePriceByFilters(filters.value, filter.options[filter.value].text, int.Parse(avg.text));//TODO: check filter and avg values
 
         ClosePanel();//Maybe we can leave it open
     }
 
     public void ClosePanel()
     {
-        TMP_InputField inputField = filterInput.GetComponent<TMP_InputField>();
-        inputField.text = "";
-        filterInput.SetActive(false);
+        filter.ClearOptions();
+        filter.gameObject.SetActive(false);
 
         avg.text = "0";
 
-        TMP_Dropdown filters = dropbox.GetComponent<TMP_Dropdown>();
         filters.value = 0;
 
         panel.SetActive(false);
@@ -38,7 +32,14 @@ public class PricePanelController : MonoBehaviour
 
     public void FilterChanged()
     {
-        TMP_Dropdown filters = dropbox.GetComponent<TMP_Dropdown>();
-        filterInput.SetActive(filters.value != 0);
+        filter.ClearOptions();
+        filter.gameObject.SetActive(filters.value != 0);
+
+        if (filters.value == 1)
+            filter.AddOptions(stockManager.GetProductsCategorys());
+        else if (filters.value == 2)
+            filter.AddOptions(stockManager.GetProductsBrands());
+        else if (filters.value == 3)
+            filter.AddOptions(stockManager.GetProductsNames());
     }
 }

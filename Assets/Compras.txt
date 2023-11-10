@@ -1,3 +1,0 @@
-20-10-2023;Producton;S;Roberto;1000;8898
-26-10-2023;A;B;Roberto;1;777
-27-10-2023;D;Marca;Norberto;50;55
