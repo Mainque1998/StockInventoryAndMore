@@ -72,6 +72,7 @@ public class ContentManager : MonoBehaviour
         {
             updatesDate = newUD;
             ReLoadContent();
+            LoadFile();
         }
     }
 
@@ -166,6 +167,12 @@ public class ContentManager : MonoBehaviour
         {
             foreach (Product pr in products)
                 if (pr.Brand == filter)
+                    UpdatePrice(pr, average);
+        }
+        if (typeFilter == 3)//Change by Name
+        {
+            foreach (Product pr in products)
+                if (pr.Name == filter)
                     UpdatePrice(pr, average);
         }
 
@@ -307,12 +314,28 @@ public class ContentManager : MonoBehaviour
         }
     }
 
-    public List<string> GetProductsNames()//Used from purchase and sale products controllers
+    public List<string> GetProductsNames()//Used from purchase and sale products controllers (also from price panel)
     {
         List<string> r = new List<string>();
         foreach (Product pr in products)
             if(!r.Contains(pr.Name))
                 r.Add(pr.Name);
+        return r;
+    }
+    public List<string> GetProductsBrands()//Used from price panel controller
+    {
+        List<string> r = new List<string>();
+        foreach (Product pr in products)
+            if (!r.Contains(pr.Brand))
+                r.Add(pr.Brand);
+        return r;
+    }
+    public List<string> GetProductsCategorys()//Used from price panel controller
+    {
+        List<string> r = new List<string>();
+        foreach (Product pr in products)
+            if (!r.Contains(pr.Category))
+                r.Add(pr.Category);
         return r;
     }
 
