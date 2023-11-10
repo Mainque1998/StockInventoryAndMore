@@ -14,6 +14,8 @@ public class ContentManager : MonoBehaviour
 
     private string filePath;
 
+    private DateTime updatesDate; //All the updates before this date, will be highlighted
+
     public NotificationPanelController notification;
 
     private void Start()
@@ -22,13 +24,20 @@ public class ContentManager : MonoBehaviour
         if (File.Exists(filePath))
             LoadContent();
         else
+        {
             File.Create(filePath);
+            updatesDate = DateTime.Now;
+        }
     }
 
     private void LoadContent()
     {
         Debug.Log("Cargando stock.");
         StreamReader sr = new StreamReader(filePath);
+
+        string[] uDate = sr.ReadLine().Split('-');
+        updatesDate = new DateTime(int.Parse(uDate[2]), int.Parse(uDate[1]), int.Parse(uDate[0]));
+
         string p = sr.ReadLine();
         while (p!= null)
         {
@@ -49,10 +58,21 @@ public class ContentManager : MonoBehaviour
     {
         StreamWriter sw = new StreamWriter(filePath);
 
+        sw.WriteLine(updatesDate.ToString("dd-MM-yyyy"));
+
         foreach (Product pr in products)
             sw.WriteLine( pr.ToString() );
 
         sw.Close();
+    }
+
+    public void SetUpdatesDate(DateTime newUD)
+    {
+        if(updatesDate.CompareTo(newUD)!=0)
+        {
+            updatesDate = newUD;
+            ReLoadContent();
+        }
     }
 
     public bool AddNewProduct(string code, string name, string brand, string category, string quant, string cost, string price)
@@ -118,6 +138,12 @@ public class ContentManager : MonoBehaviour
         vars[4].text = quant;
         vars[5].text = cost;
         vars[6].text = price;
+
+        string[] date = update.Split('-');
+        DateTime uDate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+        if (updatesDate.CompareTo(uDate) <= 0)
+            update = "<mark =#ffff00>" + update; //Highlight the date
+
         vars[7].text = update;
     }
 
