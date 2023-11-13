@@ -10,11 +10,10 @@ public class ContentFiltersController : MonoBehaviour
     public TMP_InputField nameInput;
     public TMP_InputField brandInput;
     public TMP_InputField categoryInput;
-    private Filter filter;
 
     public void NewCodeFilter()
     {
-        filter = new FilterCode(codeInput.text);
+        Filter filter = new FilterCode(codeInput.text);
 
         if (!nameInput.text.Equals(""))
             filter = new FilterAnd(filter, new FilterName(nameInput.text));
@@ -30,7 +29,7 @@ public class ContentFiltersController : MonoBehaviour
 
     public void NewNameFilter()
     {
-        filter = new FilterName(nameInput.text);
+        Filter filter = new FilterName(nameInput.text);
 
         if (!codeInput.text.Equals(""))
             filter = new FilterAnd(filter, new FilterCode(codeInput.text));
@@ -46,7 +45,7 @@ public class ContentFiltersController : MonoBehaviour
 
     public void NewBrandFilter()
     {
-        filter = new FilterBrand(brandInput.text);
+        Filter filter = new FilterBrand(brandInput.text);
 
         if (!codeInput.text.Equals(""))
             filter = new FilterAnd(filter, new FilterCode(codeInput.text));
@@ -62,7 +61,7 @@ public class ContentFiltersController : MonoBehaviour
 
     public void NewCategoryFilter()
     {
-        filter = new FilterCategory(categoryInput.text);
+        Filter filter = new FilterCategory(categoryInput.text);
 
         if (!codeInput.text.Equals(""))
             filter = new FilterAnd(filter, new FilterCode(codeInput.text));

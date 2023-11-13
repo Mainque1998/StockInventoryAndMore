@@ -13,7 +13,11 @@ public class PricePanelController : MonoBehaviour
 
     public void ChangePrices()
     {
-        stockManager.UpdatePriceByFilters(filters.value, filter.options[filter.value].text, int.Parse(avg.text));//TODO: check filter and avg values
+        string filterText="";
+        if (filters.value != 0)
+            filterText = filter.options[filter.value].text;
+
+        stockManager.UpdatePriceByFilters(filters.value, filterText, int.Parse(avg.text));//TODO: check filter and avg values
 
         ClosePanel();//Maybe we can leave it open
     }

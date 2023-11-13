@@ -633,7 +633,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427475981}
+      - m_Target: {fileID: 458912962}
         m_TargetAssemblyTypeName: PanelsController, Assembly-CSharp
         m_MethodName: OpenSales
         m_Mode: 1
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 31292831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3d96590a29ac84e9a63e7a2f376404, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f0c5a0df438c9c45833ab41eebfd90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockManager: {fileID: 1534825911}
@@ -8866,7 +8866,6 @@ GameObject:
   - component: {fileID: 427475980}
   - component: {fileID: 427475979}
   - component: {fileID: 427475978}
-  - component: {fileID: 427475981}
   m_Layer: 5
   m_Name: ProductsButton
   m_TagString: Untagged
@@ -8939,7 +8938,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427475981}
+      - m_Target: {fileID: 458912962}
         m_TargetAssemblyTypeName: PanelsController, Assembly-CSharp
         m_MethodName: OpenProducts
         m_Mode: 1
@@ -8989,27 +8988,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427475975}
   m_CullTransparentMesh: 1
---- !u!114 &427475981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427475975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db0725b38bbcff4fb8bdb8738e29ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productsPanel: {fileID: 1382767237}
-  purchasesPanel: {fileID: 1140469834}
-  salesPanel: {fileID: 873070353}
-  accountPanel: {fileID: 0}
-  productsButton: {fileID: 427475975}
-  purchasesButton: {fileID: 1587299996}
-  salesButton: {fileID: 17297315}
-  accountButton: {fileID: 2080547671}
-  selectedColor: {r: 0.2627451, g: 0.050980393, b: 0.24705882, a: 1}
 --- !u!1 &434363582
 GameObject:
   m_ObjectHideFlags: 0
@@ -9425,6 +9403,7 @@ GameObject:
   - component: {fileID: 458912959}
   - component: {fileID: 458912961}
   - component: {fileID: 458912960}
+  - component: {fileID: 458912962}
   m_Layer: 5
   m_Name: ButtonsPanel
   m_TagString: Untagged
@@ -9496,6 +9475,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458912958}
   m_CullTransparentMesh: 1
+--- !u!114 &458912962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458912958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629db15b61cff0943b9a0bfd523b3466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productsPanel: {fileID: 1382767237}
+  purchasesPanel: {fileID: 1140469834}
+  salesPanel: {fileID: 873070353}
+  accountPanel: {fileID: 0}
+  productsButton: {fileID: 427475975}
+  purchasesButton: {fileID: 1587299996}
+  salesButton: {fileID: 17297315}
+  accountButton: {fileID: 2080547671}
+  selectedColor: {r: 0.21960786, g: 0.043137256, b: 0.20784315, a: 0}
 --- !u!1 &461870247
 GameObject:
   m_ObjectHideFlags: 0
@@ -11141,7 +11141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 529017038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619b59519ffd2af4e98de1d2680967d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c965ac82f242c349b9b18f69643f19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 1403065319}
@@ -11420,7 +11420,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 537213191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7c64b058f98a3498a1b078b49bb635, type: 3}
+  m_Script: {fileID: 11500000, guid: 835517fc36611b24e907cc5683062f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockManager: {fileID: 1534825911}
@@ -12136,7 +12136,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 566105132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aebe8c0b4082d847a18799a725d8e0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 23a8cf51061fe894ab3cb590fd32002a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1784839472}
@@ -12558,7 +12558,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 587716866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cdd18de560da6c4eb22038ecab6bc94, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eaef3374370c4f4f8f6eef7449ed14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   codeInput: {fileID: 1795309622}
@@ -13747,7 +13747,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 659230162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33045754c9131a846bc21bc483219586, type: 3}
+  m_Script: {fileID: 11500000, guid: e853ef4bfcb4c1d47ac9cccc2e93aa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockManager: {fileID: 1534825911}
@@ -17865,7 +17865,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 900929651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce61daf867c21a4e973d600e37b9906, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1cca1bdda339d4b8f9e9b154ee56bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   salePrefab: {fileID: 3225701432876852004, guid: 6a6749bcbf8ad5f43bf990f10db18a89, type: 3}
@@ -22694,7 +22694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1155639208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40330dda1a74bb443b6ffaaf9f4c5071, type: 3}
+  m_Script: {fileID: 11500000, guid: 7636a8a2e2c32ed469be46f2b13bb1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1157130709
@@ -23577,7 +23577,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1216583048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df794aaff0576df439a61eb349bb83b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 35e338374c6458846af35eaea0d53840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stockManager: {fileID: 1534825911}
@@ -24705,7 +24705,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279112191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8c6361d1b7279d4ab2c9d267bbcdcff, type: 3}
+  m_Script: {fileID: 11500000, guid: 32f393ee0c553904f969ce16df1ea629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 780849266}
@@ -29454,7 +29454,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534825907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57bfc07f54367ac4f80e7f042ec07037, type: 3}
+  m_Script: {fileID: 11500000, guid: 434370d7f1f59a147b5d03f8f29f7c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   productPrefab: {fileID: 6480037196060894062, guid: 8ad5d17d78216b744af24a7468781cec, type: 3}
@@ -30565,7 +30565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427475981}
+      - m_Target: {fileID: 458912962}
         m_TargetAssemblyTypeName: PanelsController, Assembly-CSharp
         m_MethodName: OpenPurchases
         m_Mode: 1
@@ -36886,7 +36886,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953192281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df57e08f3def3b84d8d12f28170e419e, type: 3}
+  m_Script: {fileID: 11500000, guid: 55dd60e8f10aa9e419957f5ef01494c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   purchasePrefab: {fileID: 3225701432876852004, guid: f0676189ed9039d489fa6f4cda6fe27a, type: 3}
@@ -39111,9 +39111,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427475981}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PanelsController, Assembly-CSharp
-        m_MethodName: OpenAccount
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
