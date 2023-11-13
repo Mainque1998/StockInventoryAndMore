@@ -16,6 +16,8 @@ public class ContentManager : MonoBehaviour
 
     private DateTime updatesDate; //All the updates before this date, will be highlighted
 
+    private Filter filter = null;
+
     public NotificationPanelController notification;
 
     private void Start()
@@ -89,9 +91,12 @@ public class ContentManager : MonoBehaviour
         products.Add(p);
         Debug.Log("Se agregó el producto: " + code + ", nombre " + name + " de la marca " + brand);
 
-        GameObject newP = (GameObject)Instantiate(productPrefab);
-        newP.transform.SetParent(this.transform);
-        LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
+        if(filter == null || filter.Satisfy(p))
+        {
+            GameObject newP = (GameObject)Instantiate(productPrefab);
+            newP.transform.SetParent(this.transform);
+            LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
+        }
 
         LoadFile();
 
@@ -113,7 +118,10 @@ public class ContentManager : MonoBehaviour
         products[posP].SetAll(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         Debug.Log("Se modificó el producto con código " + vars[0].text);
 
-        LoadProduct(p, code, name, brand, category, quant, cost, price, products[posP].Update);
+        if (filter == null || filter.Satisfy(products[posP]))
+            LoadProduct(p, code, name, brand, category, quant, cost, price, products[posP].Update);
+        else
+            Destroy(p);
 
         LoadFile();
 
@@ -299,8 +307,10 @@ public class ContentManager : MonoBehaviour
         return d1.CompareTo(d2);
     }
 
-    private void ReLoadContent()
+    public void ReLoadContent()
     {
+        Debug.Log("Reloading stock content");
+
         foreach (Transform child in this.transform)
         {
             Destroy(child.gameObject);
@@ -308,10 +318,20 @@ public class ContentManager : MonoBehaviour
 
         foreach (Product pr in products)
         {
-            GameObject newP = (GameObject)Instantiate(productPrefab);
-            newP.transform.SetParent(this.transform);
-            LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
+            if(filter == null || filter.Satisfy(pr))
+            {
+                GameObject newP = (GameObject)Instantiate(productPrefab);
+                newP.transform.SetParent(this.transform);
+                LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
+            }
         }
+    }
+
+    public void SetFilter(Filter f)
+    {
+        Debug.Log("Seting stock content filter");
+        filter = f;
+        ReLoadContent();
     }
 
     public List<string> GetProductsNames()//Used from purchase and sale products controllers (also from price panel)
