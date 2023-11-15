@@ -2352,14 +2352,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByName
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5289,6 +5289,7 @@ GameObject:
   - component: {fileID: 272857071}
   - component: {fileID: 272857073}
   - component: {fileID: 272857072}
+  - component: {fileID: 272857074}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -5362,6 +5363,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272857070}
   m_CullTransparentMesh: 1
+--- !u!114 &272857074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272857070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92d87676295741b43d553c6b4fba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stockManager: {fileID: 1534825911}
 --- !u!1 &288755486
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,14 +6103,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByCategory
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9886,14 +9900,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByUpdate
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15047,14 +15061,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByBrand
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16537,14 +16551,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByCost
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18090,14 +18104,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByQuant
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -28565,10 +28579,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByCode
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31696,14 +31710,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534825911}
-        m_TargetAssemblyTypeName: ContentManager, Assembly-CSharp
-        m_MethodName: ReOrderContentByPrice
-        m_Mode: 1
+      - m_Target: {fileID: 272857074}
+        m_TargetAssemblyTypeName: ReOrderProductsController, Assembly-CSharp
+        m_MethodName: ReOrder
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

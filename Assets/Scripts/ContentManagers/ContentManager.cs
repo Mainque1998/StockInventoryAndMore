@@ -228,83 +228,10 @@ public class ContentManager : MonoBehaviour
         return false;
     }
 
-    public void ReOrderContentByCode()
+    public void ReOrderContent(Comparison<Product> c)
     {
-        products.Sort(CompareProductsByCode);
+        products.Sort(c);
         ReLoadContent();
-
-    }
-    private static int CompareProductsByCode(Product p1, Product p2)
-    {
-        return p1.Code.CompareTo(p2.Code);
-    }
-    public void ReOrderContentByName()
-    {
-        products.Sort(CompareProductsByName);
-        ReLoadContent();
-    }
-    private static int CompareProductsByName(Product p1, Product p2)
-    {
-        return p1.Name.CompareTo(p2.Name);
-    }
-    public void ReOrderContentByBrand()
-    {
-        products.Sort(CompareProductsByBrand);
-        ReLoadContent();
-    }
-    private static int CompareProductsByBrand(Product p1, Product p2)
-    {
-        return p1.Brand.CompareTo(p2.Brand);
-    }
-    public void ReOrderContentByCategory()
-    {
-        products.Sort(CompareProductsByCategory);
-        ReLoadContent();
-    }
-    private static int CompareProductsByCategory(Product p1, Product p2)
-    {
-        return p1.Category.CompareTo(p2.Category);
-    }
-    public void ReOrderContentByQuant()
-    {
-        products.Sort(CompareProductsByQuant);
-        ReLoadContent();
-    }
-    private static int CompareProductsByQuant(Product p1, Product p2)
-    {
-        return p1.Quant.CompareTo(p2.Quant);
-    }
-    public void ReOrderContentByCost()
-    {
-        products.Sort(CompareProductsByCost);
-        ReLoadContent();
-    }
-    private static int CompareProductsByCost(Product p1, Product p2)
-    {
-        return p1.Cost.CompareTo(p2.Cost);
-    }
-    public void ReOrderContentByPrice()
-    {
-        products.Sort(CompareProductsByPrice);
-        ReLoadContent();
-    }
-    private static int CompareProductsByPrice(Product p1, Product p2)
-    {
-        return p1.Price.CompareTo(p2.Price);
-    }
-    public void ReOrderContentByUpdate()
-    {
-        products.Sort(CompareProductsByUpdate);
-        ReLoadContent();
-    }
-    private static int CompareProductsByUpdate(Product p1, Product p2)
-    {
-        string[] date = p1.Update.Split('-');
-        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-        date = p2.Update.Split('-');
-        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-
-        return d1.CompareTo(d2);
     }
 
     public void ReLoadContent()
