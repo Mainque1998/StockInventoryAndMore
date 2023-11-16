@@ -7,14 +7,14 @@ public class ReOrderProductsController : MonoBehaviour
 {
     public ContentManager stockManager;
 
-    private bool codeFlag = false;
-    private bool nameFlag = false;
-    private bool brandFlag = false;
-    private bool categoryFlag = false;
-    private bool quantFlag = false;
-    private bool costFlag = false;
-    private bool priceFlag = false;
-    private bool updateFlag = false;
+    private bool codeFlag = true;
+    private bool nameFlag = true;
+    private bool brandFlag = true;
+    private bool categoryFlag = true;
+    private bool quantFlag = true;
+    private bool costFlag = true;
+    private bool priceFlag = true;
+    private bool updateFlag = true;
 
     public void ReOrder(int i)
     {
