@@ -58,8 +58,18 @@ public class ContentSalesManager : MonoBehaviour
     public bool AddNewSale(string date, string product, string brand, string quant, string price)
     {
         //TODO: maybe we can first check the stock, and in case of insuficience notify the user
-        if (stockManager.SubQuantToProduct(product, brand, int.Parse(quant)))
+        int stock = stockManager.GetProductQuant(product, brand);
+
+        if(stock == -1)
         {
+            Debug.Log("ERROR: No se encuentra el producto " + product + " de la marca " + brand);
+            notification.OpenPanel("ERROR", "No se encuentra el producto " + product + " de la marca " + brand + ". \nPor favor modifique los datos o cancele la venta.");
+            return false;
+        }
+
+        if (stock >= int.Parse(quant))
+        {
+            stockManager.SubQuantToProduct(product, brand, int.Parse(quant));
             Debug.Log("Se agregó una venta nueva");
 
             GameObject newP = (GameObject)Instantiate(salePrefab);
@@ -75,7 +85,7 @@ public class ContentSalesManager : MonoBehaviour
         else
         {
             Debug.Log("ERROR: Stock insuficiente para la venta del producto "+product+" de la marca "+brand);
-            notification.OpenPanel("ERROR", "Stock insuficiente para la venta del producto " + product + " de la marca " + brand + ". \nPor favor modifique los datos o cancele la venta.");
+            notification.OpenPanel("ERROR", "Stock insuficiente ("+stock+") para la venta del producto " + product + " de la marca " + brand + ". \nPor favor modifique los datos o cancele la venta.");
             return false;
         }
     }

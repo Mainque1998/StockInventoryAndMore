@@ -207,6 +207,16 @@ public class ContentManager : MonoBehaviour
             }
     }
 
+    public int GetProductQuant(string name, string brand)//Used from sales manager
+    {
+        foreach (Product pr in products)
+            if ((pr.Name == name) && (pr.Brand == brand))
+            {
+                return pr.Quant;
+            }
+        return -1;
+    }
+
     public bool SubQuantToProduct(string name, string brand, int quant)//Used from sales manager
     {
         foreach (Product pr in products)
