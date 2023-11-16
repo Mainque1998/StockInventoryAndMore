@@ -16,6 +16,8 @@ public class ContentManager : MonoBehaviour
 
     private DateTime updatesDate; //All the updates before this date, will be highlighted
 
+    private Filter filter = null;
+
     public NotificationPanelController notification;
 
     private void Start()
@@ -89,9 +91,12 @@ public class ContentManager : MonoBehaviour
         products.Add(p);
         Debug.Log("Se agregó el producto: " + code + ", nombre " + name + " de la marca " + brand);
 
-        GameObject newP = (GameObject)Instantiate(productPrefab);
-        newP.transform.SetParent(this.transform);
-        LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
+        if(filter == null || filter.Satisfy(p))
+        {
+            GameObject newP = (GameObject)Instantiate(productPrefab);
+            newP.transform.SetParent(this.transform);
+            LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
+        }
 
         LoadFile();
 
@@ -113,7 +118,10 @@ public class ContentManager : MonoBehaviour
         products[posP].SetAll(code, name, brand, category, int.Parse(quant), double.Parse(cost), double.Parse(price));
         Debug.Log("Se modificó el producto con código " + vars[0].text);
 
-        LoadProduct(p, code, name, brand, category, quant, cost, price, products[posP].Update);
+        if (filter == null || filter.Satisfy(products[posP]))
+            LoadProduct(p, code, name, brand, category, quant, cost, price, products[posP].Update);
+        else
+            Destroy(p);
 
         LoadFile();
 
@@ -220,87 +228,16 @@ public class ContentManager : MonoBehaviour
         return false;
     }
 
-    public void ReOrderContentByCode()
+    public void ReOrderContent(Comparison<Product> c)
     {
-        products.Sort(CompareProductsByCode);
+        products.Sort(c);
         ReLoadContent();
-
-    }
-    private static int CompareProductsByCode(Product p1, Product p2)
-    {
-        return p1.Code.CompareTo(p2.Code);
-    }
-    public void ReOrderContentByName()
-    {
-        products.Sort(CompareProductsByName);
-        ReLoadContent();
-    }
-    private static int CompareProductsByName(Product p1, Product p2)
-    {
-        return p1.Name.CompareTo(p2.Name);
-    }
-    public void ReOrderContentByBrand()
-    {
-        products.Sort(CompareProductsByBrand);
-        ReLoadContent();
-    }
-    private static int CompareProductsByBrand(Product p1, Product p2)
-    {
-        return p1.Brand.CompareTo(p2.Brand);
-    }
-    public void ReOrderContentByCategory()
-    {
-        products.Sort(CompareProductsByCategory);
-        ReLoadContent();
-    }
-    private static int CompareProductsByCategory(Product p1, Product p2)
-    {
-        return p1.Category.CompareTo(p2.Category);
-    }
-    public void ReOrderContentByQuant()
-    {
-        products.Sort(CompareProductsByQuant);
-        ReLoadContent();
-    }
-    private static int CompareProductsByQuant(Product p1, Product p2)
-    {
-        return p1.Quant.CompareTo(p2.Quant);
-    }
-    public void ReOrderContentByCost()
-    {
-        products.Sort(CompareProductsByCost);
-        ReLoadContent();
-    }
-    private static int CompareProductsByCost(Product p1, Product p2)
-    {
-        return p1.Cost.CompareTo(p2.Cost);
-    }
-    public void ReOrderContentByPrice()
-    {
-        products.Sort(CompareProductsByPrice);
-        ReLoadContent();
-    }
-    private static int CompareProductsByPrice(Product p1, Product p2)
-    {
-        return p1.Price.CompareTo(p2.Price);
-    }
-    public void ReOrderContentByUpdate()
-    {
-        products.Sort(CompareProductsByUpdate);
-        ReLoadContent();
-    }
-    private static int CompareProductsByUpdate(Product p1, Product p2)
-    {
-        string[] date = p1.Update.Split('-');
-        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-        date = p2.Update.Split('-');
-        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-
-        return d1.CompareTo(d2);
     }
 
-    private void ReLoadContent()
+    public void ReLoadContent()
     {
+        Debug.Log("Reloading stock content");
+
         foreach (Transform child in this.transform)
         {
             Destroy(child.gameObject);
@@ -308,10 +245,20 @@ public class ContentManager : MonoBehaviour
 
         foreach (Product pr in products)
         {
-            GameObject newP = (GameObject)Instantiate(productPrefab);
-            newP.transform.SetParent(this.transform);
-            LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
+            if(filter == null || filter.Satisfy(pr))
+            {
+                GameObject newP = (GameObject)Instantiate(productPrefab);
+                newP.transform.SetParent(this.transform);
+                LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
+            }
         }
+    }
+
+    public void SetFilter(Filter f)
+    {
+        Debug.Log("Seting stock content filter");
+        filter = f;
+        ReLoadContent();
     }
 
     public List<string> GetProductsNames()//Used from purchase and sale products controllers (also from price panel)

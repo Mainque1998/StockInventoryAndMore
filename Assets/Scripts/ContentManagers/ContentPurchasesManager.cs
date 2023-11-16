@@ -78,64 +78,10 @@ public class ContentPurchasesManager : MonoBehaviour
         vars[5].text = cost;
     }
 
-    public void ReOrderContentByDate()
+    public void ReOrderContent(Comparison<Purchase> c)
     {
-        purchases.Sort(ComparePurchasesByDate);
+        purchases.Sort(c);
         ReLoadContent();
-    }
-    private static int ComparePurchasesByDate(Purchase p1, Purchase p2)
-    {
-        string[] date = p1.Date.Split('-');
-        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-        date = p2.Date.Split('-');
-        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-
-        return d1.CompareTo(d2);
-    }
-    public void ReOrderContentByProductName()
-    {
-        purchases.Sort(ComparePurchasesByProductName);
-        ReLoadContent();
-    }
-    private static int ComparePurchasesByProductName(Purchase p1, Purchase p2)
-    {
-        return p1.ProductName.CompareTo(p2.ProductName);
-    }
-    public void ReOrderContentByProductBrand()
-    {
-        purchases.Sort(ComparePurchasesByProductBrand);
-        ReLoadContent();
-    }
-    private static int ComparePurchasesByProductBrand(Purchase p1, Purchase p2)
-    {
-        return p1.ProductBrand.CompareTo(p2.ProductBrand);
-    }
-    public void ReOrderContentBySupplier()
-    {
-        purchases.Sort(ComparePurchasesBySupplier);
-        ReLoadContent();
-    }
-    private static int ComparePurchasesBySupplier(Purchase p1, Purchase p2)
-    {
-        return p1.Supplier.CompareTo(p2.Supplier);
-    }
-    public void ReOrderContentByQuant()
-    {
-        purchases.Sort(ComparePurchasesByQuant);
-        ReLoadContent();
-    }
-    private static int ComparePurchasesByQuant(Purchase p1, Purchase p2)
-    {
-        return p1.Quant.CompareTo(p2.Quant);
-    }
-    public void ReOrderContentByCost()
-    {
-        purchases.Sort(ComparePurchasesByCost);
-        ReLoadContent();
-    }
-    private static int ComparePurchasesByCost(Purchase p1, Purchase p2)
-    {
-        return p1.Cost.CompareTo(p2.Cost);
     }
 
     private void ReLoadContent()

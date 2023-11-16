@@ -89,8 +89,13 @@ public class ContentSalesManager : MonoBehaviour
         vars[3].text = quant;
         vars[4].text = price;
     }
+    public void ReOrderContent(Comparison<Sale> c)
+    {
+        sales.Sort(c);
+        ReLoadContent();
+    }
 
-    public void ReOrderContentByDate()
+    /*public void ReOrderContentByDate()
     {
         sales.Sort(CompareSalesByDate);
         ReLoadContent();
@@ -139,7 +144,7 @@ public class ContentSalesManager : MonoBehaviour
     private static int CompareSalesByPrice(Sale p1, Sale p2)
     {
         return p1.Price.CompareTo(p2.Price);
-    }
+    }*/
 
     private void ReLoadContent()
     {
