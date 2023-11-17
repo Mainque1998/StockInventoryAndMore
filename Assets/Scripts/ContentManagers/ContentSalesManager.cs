@@ -105,57 +105,6 @@ public class ContentSalesManager : MonoBehaviour
         ReLoadContent();
     }
 
-    /*public void ReOrderContentByDate()
-    {
-        sales.Sort(CompareSalesByDate);
-        ReLoadContent();
-    }
-    private static int CompareSalesByDate(Sale p1, Sale p2)
-    {
-        string[] date = p1.Date.Split('-');
-        DateTime d1 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-        date = p2.Date.Split('-');
-        DateTime d2 = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-
-        return d1.CompareTo(d2);
-    }
-    public void ReOrderContentByProductName()
-    {
-        sales.Sort(CompareSalesByProductName);
-        ReLoadContent();
-    }
-    private static int CompareSalesByProductName(Sale p1, Sale p2)
-    {
-        return p1.ProductName.CompareTo(p2.ProductName);
-    }
-    public void ReOrderContentByProductBrand()
-    {
-        sales.Sort(CompareSalesByProductBrand);
-        ReLoadContent();
-    }
-    private static int CompareSalesByProductBrand(Sale p1, Sale p2)
-    {
-        return p1.ProductBrand.CompareTo(p2.ProductBrand);
-    }
-    public void ReOrderContentByQuant()
-    {
-        sales.Sort(CompareSalesByQuant);
-        ReLoadContent();
-    }
-    private static int CompareSalesByQuant(Sale p1, Sale p2)
-    {
-        return p1.Quant.CompareTo(p2.Quant);
-    }
-    public void ReOrderContentByPrice()
-    {
-        sales.Sort(CompareSalesByPrice);
-        ReLoadContent();
-    }
-    private static int CompareSalesByPrice(Sale p1, Sale p2)
-    {
-        return p1.Price.CompareTo(p2.Price);
-    }*/
-
     private void ReLoadContent()
     {
         foreach (Transform child in this.transform)
