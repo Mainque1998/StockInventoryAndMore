@@ -39,6 +39,7 @@ public class ContentSalesManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(salePrefab);
             newP.transform.SetParent(this.transform);
             LoadSale(newP, vars[0], vars[1], vars[2], vars[3], vars[4]);
+            newP.transform.localScale = new Vector3(1, 1, 1);
 
             p = sr.ReadLine();
         }
@@ -75,6 +76,7 @@ public class ContentSalesManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(salePrefab);
             newP.transform.SetParent(this.transform);
             LoadSale(newP, date, product, brand, quant, price);
+            newP.transform.localScale = new Vector3(1, 1, 1);
 
             sales.Add(new Sale(date, product, brand, int.Parse(quant), double.Parse(price)));
 
@@ -117,6 +119,7 @@ public class ContentSalesManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(salePrefab);
             newP.transform.SetParent(this.transform);
             LoadSale(newP, s.Date, s.ProductName, s.ProductBrand, s.Quant.ToString(), s.Price.ToString());
+            newP.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

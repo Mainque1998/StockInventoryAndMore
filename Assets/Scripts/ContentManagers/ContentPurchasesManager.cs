@@ -37,6 +37,7 @@ public class ContentPurchasesManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(purchasePrefab);
             newP.transform.SetParent(this.transform);
             LoadPurchase(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5]);
+            newP.transform.localScale = new Vector3(1, 1, 1);
 
             p = sr.ReadLine();
         }
@@ -61,6 +62,7 @@ public class ContentPurchasesManager : MonoBehaviour
         GameObject newP = (GameObject)Instantiate(purchasePrefab);
         newP.transform.SetParent(this.transform);
         LoadPurchase(newP, date, product, brand, supplier, quant, cost);
+        newP.transform.localScale = new Vector3(1, 1, 1);
 
         stockManager.AddQuantToProduct(product, brand, int.Parse(quant), double.Parse(cost));
 
@@ -96,6 +98,7 @@ public class ContentPurchasesManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(purchasePrefab);
             newP.transform.SetParent(this.transform);
             LoadPurchase(newP, pr.Date, pr.ProductName, pr.ProductBrand, pr.Supplier, pr.Quant.ToString(), pr.Cost.ToString());
+            newP.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

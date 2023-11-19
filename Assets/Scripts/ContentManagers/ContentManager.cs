@@ -50,6 +50,7 @@ public class ContentManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(productPrefab);
             newP.transform.SetParent(this.transform);
             LoadProduct(newP, vars[0], vars[1], vars[2], vars[3], vars[4], vars[5], vars[6], vars[7]);
+            newP.transform.localScale = new Vector3(1, 1, 1);
 
             p = sr.ReadLine();
         }
@@ -96,6 +97,7 @@ public class ContentManager : MonoBehaviour
             GameObject newP = (GameObject)Instantiate(productPrefab);
             newP.transform.SetParent(this.transform);
             LoadProduct(newP, code, name, brand, category, quant, cost, price, update);
+            newP.transform.localScale = new Vector3(1, 1, 1);
         }
 
         LoadFile();
@@ -106,8 +108,11 @@ public class ContentManager : MonoBehaviour
     public bool UpdateProduct(GameObject p, string code, string name, string brand, string category, string quant, string cost, string price)
     {
         TMP_Text[] vars = p.gameObject.GetComponentsInChildren<TMP_Text>();
-        if ( (vars[0].text != code || vars[1].text != name || vars[2].text != brand) //It mean, they're the same keys
-            && products.Contains(new Product(code, name, brand)))
+        if ( ((vars[0].text != code) //It mean, they're the same keys
+            && products.Contains(new Product(code, " ", " ")))
+            ||((vars[1].text != name || vars[2].text != brand) //It mean, they're the same secundary keys
+            && products.Contains(new Product(" ", name, brand)))
+            )
         {
             Debug.Log("ERROR: Ya existe el producto: " + code + ", " + name + " de la marca " + brand);
             notification.OpenPanel("ERROR", "Ya existe el producto: " + code + ", " + name + " de la marca " + brand + "." + "\nPor favor modifique los datos o cancele la operación.");
@@ -260,6 +265,7 @@ public class ContentManager : MonoBehaviour
                 GameObject newP = (GameObject)Instantiate(productPrefab);
                 newP.transform.SetParent(this.transform);
                 LoadProduct(newP, pr.Code, pr.Name, pr.Brand, pr.Category, pr.Quant.ToString(), pr.Cost.ToString(), pr.Price.ToString(), pr.Update);
+                newP.transform.localScale = new Vector3(1,1,1);
             }
         }
     }

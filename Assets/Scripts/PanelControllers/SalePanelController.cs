@@ -44,6 +44,7 @@ public class SalePanelController : MonoBehaviour
         GameObject newP = (GameObject)Instantiate(productContentPrefab);
         newP.transform.SetParent(productsContent.transform);
         newP.GetComponent<SaleProductController>().SetStock(stockManager);
+        newP.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void Acept()
